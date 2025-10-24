@@ -1,0 +1,179 @@
+/* #region PLUGINS */
+/* #region {List Callouts} */
+.markdown-rendered .lc-list-callout {
+  padding-block: var(--list-spacing-default);
+  --list-spacing-default: 0.075em;
+}
+
+/* does nothing if list spacing is default (i.e., when line height is Compact) */
+.lc-list-callout > .list-bullet {
+  padding-top: calc(var(--list-spacing) - var(--list-spacing-default));
+}
+
+.lc-li-wrapper {
+  padding-block: calc(var(--list-spacing) - var(--list-spacing-default));
+  padding-inline-end: 0.75em;
+  z-index: 0;
+}
+.lc-li-wrapper::after {
+  border-radius: var(--radius-s);
+}
+
+.lc-list-callout :is(strong, .cm-strong) {
+  color: rgb(var(--lc-callout-color), 0.8);
+}
+
+body:not(.disable-list-styling) .lc-list-callout > .list-bullet::after {
+  content: ">";
+}
+
+/* List Callout Default colors */
+.lc-list-callout[data-callout="!"] {
+  --lc-callout-color: var(--color-red-rgb) !important;
+}
+.lc-list-callout[data-callout="~"] {
+  --lc-callout-color: var(--color-purple-rgb) !important;
+}
+.lc-list-callout[data-callout="@"] {
+  --lc-callout-color: var(--color-cyan-rgb) !important;
+}
+.lc-list-callout[data-callout="$"] {
+  --lc-callout-color: var(--color-green-rgb) !important;
+}
+
+/* List Callouts Settings */
+.vertical-tab-content .lc-setting {
+  display: flex;
+  flex-direction: column;
+  border-block: none;
+  border-inline: 1px solid transparent;
+  padding: 14px 18px;
+}
+.vertical-tab-content .lc-setting:last-child {
+  background-color: var(--setting-item-bg);
+  border: 1px solid var(--setting-item-border-color);
+  border-radius: var(--radius-ml);
+  box-shadow: var(--shadow-setting-item);
+  margin-block: 12px;
+}
+.vertical-tab-content .lc-callout-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--trans-strong-30);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-input);
+  padding: 6px 16px 6px;
+  margin: 6px 4px 8px;
+}
+.vertical-tab-content .lc-input-container {
+  margin-inline: 12px 16px;
+}
+.vertical-tab-content .lc-setting .lc-input-container > * {
+  margin-inline-end: 6px;
+}
+.vertical-tab-content .lc-input-container input:last-of-type {
+  width: unset;
+}
+.vertical-tab-content .lc-input-container input:first-of-type {
+  width: 40px;
+  font-weight: var(--font-medium);
+  text-align: center;
+}
+.vertical-tab-content .lc-input-container button:first-of-type {
+  font-weight: var(--font-medium);
+}
+.vertical-tab-content .lc-setting .cm-line {
+  width: 100%;
+}
+.vertical-tab-content .lc-setting .cm-line .lc-list-bg {
+  padding-block: 0;
+}
+.vertical-tab-content .lc-setting .cm-line .lc-list-bg::after {
+  border-radius: var(--radius-s);
+}
+.vertical-tab-content .lc-setting:nth-child(4) .cm-line {
+  --lc-callout-color: var(--color-red-rgb) !important;
+}
+.vertical-tab-content .lc-setting:nth-child(5) .cm-line {
+  --lc-callout-color: var(--color-purple-rgb) !important;
+}
+.vertical-tab-content .lc-setting:nth-child(6) .cm-line {
+  --lc-callout-color: var(--color-cyan-rgb) !important;
+}
+.vertical-tab-content .lc-setting:nth-child(7) .cm-line {
+  --lc-callout-color: var(--color-green-rgb) !important;
+}
+.vertical-tab-content .lc-setting:last-child .lc-input-right-align button {
+  background-image: var(--hotkey-gradient);
+  color: var(--text-on-accent);
+}
+
+/* #endregion {List Callouts} */
+/* #region {recent-files} */
+.workspace-leaf-content[data-type=recent-files] .recent-files-file-delete {
+  margin-inline-end: var(--size-4-1);
+}
+.workspace-leaf-content[data-type=recent-files] .is-active .recent-files-file-delete {
+  color: var(--text-on-accent);
+}
+
+/* #endregion {recent-files} */
+/* #region {Regex Mark} */
+:is(.modal, .mod-settings):has(.RegexMark) .modal-close-button {
+  display: none;
+}
+
+@scope (.modal, .mod-settings) to (.vertical-tab-content.RegexMark) {
+  padding-inline-start: var(--size-4-4);
+  padding-inline-end: var(--size-4-4);
+  p > code {
+    font-family: var(--font-monospace);
+    font-size: 13px;
+    color: var(--text-error);
+    vertical-align: text-bottom;
+    padding: var(--inline-code-padding);
+    background-color: var(--inline-code-background);
+    color: var(--inline-code-color);
+    border-radius: var(--inline-code-radius);
+  }
+  input[type=text] {
+    font-family: var(--font-monospace);
+    font-size: 13px;
+    padding-inline: 3px;
+  }
+  button[aria-label~=Verify] {
+    background-color: var(--text-accent);
+    color: var(--text-on-accent);
+  }
+  button.import-save {
+    background-color: var(--text-success) !important;
+  }
+  .regex-setting .setting-item-control {
+    gap: var(--size-4-1);
+  }
+  .regex-setting .setting-item-control .extra-setting-button {
+    padding: var(--size-4-1) 1px;
+  }
+  .regex-setting .setting-item-control .extra-setting-button:nth-last-child(1), .regex-setting .setting-item-control .extra-setting-button:nth-last-child(2) {
+    padding: var(--size-4-1) 0;
+  }
+  .regex-setting .setting-item-control input[type=text].regex-input {
+    width: 100% !important;
+  }
+  .regex-setting .setting-item-control input[type=text].min-width {
+    max-width: 1ch !important;
+  }
+  .callout {
+    --callout-border-width: 0 !important;
+  }
+  .callout .callout-title {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .callout[data-callout=note] .callout-content p:nth-child(1),
+  .callout[data-callout=note] .callout-content p:nth-last-child(1) {
+    display: none;
+  }
+}
+/* #endregion {Regex Mark} */
+/* #endregion PLUGINS */

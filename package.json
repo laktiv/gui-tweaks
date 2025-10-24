@@ -5,7 +5,8 @@
   "author": "laktiv",
 
   "scripts": {
-    "sass-build": "sass src/scss/index.scss index.css --no-source-map",
+    "sass-build": "sass src/scss/index.scss index.css --no-source-map --color --no-charset",
+    "sass-build-plugins": "sass src/scss/plugins/_index.scss plugins.css --no-source-map --color --no-charset",
     "sass-watch": "sass --watch src/scss/index.scss index.css --no-source-map --color",
     "update-npm": "ncu -u"
   },

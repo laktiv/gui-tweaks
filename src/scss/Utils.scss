@@ -1,6 +1,16 @@
 @use 'sass:string';
 @use 'sass:color';
+@use 'sass:meta';
+@use 'sass:map';
 
+
+@mixin var-create($main: body, $args...) {
+  #{$main} {
+    @each $tag, $val in meta.keywords($args) {
+      --#{$tag}: #{$val};
+    }
+  }
+}
 @mixin var-color($name, $color) {
   $rgb: color.channel($color, 'red', $space: rgb),
     color.channel($color, 'green', $space: rgb),
@@ -15,7 +25,6 @@
     @content;
   }
 }
-
 @mixin use-panel($name, $child: '') {
   .workspace-leaf-content[data-type='#{$name}'] #{string.unquote($child)} {
     @content;
@@ -38,7 +47,6 @@
     height: $size;
   }
 }
-
 @mixin use-icon-override($svg-class, $icon-name) {
   #{$svg-class} {
     -webkit-mask: icon($icon-name) no-repeat;
@@ -58,4 +66,99 @@
     @return #{$name} var(--animation-slow);
   }
   @error "No such animation" + $name;
+}
+
+$whitespace: ' ', '\000C', '\000A', '\0009', '\000B', '\00A0', '\1680', '\2000', '\2001', '\2002', '\2003', '\2004', '\2005', '\2006', '\2007', '\2008', '\2009', '\200A', '\2028', '\2029', '\202F', '\205F', '\3000', '\FEFF';
+$new-string: '\000D', '\000A';
+$charsEncoding: (
+  ("%'", "%25'"),
+  // Encode "%" first, otherwise the "%" from encoded code would be encoded again (which would be bad)
+  ('"', "'"),
+  ('<', '%3C'),
+  ('>', '%3E'),
+  ('#', '%23'),
+  ('&', '%26') );
+@function encode($svg, $code: 'encode') {
+  @each $char, $encoded in $charsEncoding {
+    @if $code == 'encode' {
+      $svg: str-replace($svg, $char, $encoded);
+    } 
+    @else {
+      $svg: str-replace($svg, $encoded, $char);
+    }
+  }  
+
+  @return str-replace($svg, "\"", "'");
+}
+
+/// Replace `$search` with `$replace` in `$string`
+/// @author Kitty Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+  $index: string.index($string, $search);
+
+  @if $index {
+    @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+/// Map check if key exists and return value
+/// @param {Map} $map - Map
+/// @param {String} $key - Key name to get
+/// @param {String} $default - If key do not exists will return this value
+/// @return {String} - Desired value
+@function map-check-get($map, $key, $default: '=') {
+  @if meta.type-of($map) !='map' {
+    @warn "❗ $map \'#{$map}\' is #{meta.type-of($map)}. Will return first item.";
+    @return list.nth($map, 1);
+    //@error exception.parameter-type('map-check-get', 'map', $map, 'map');
+  }
+
+  @if map.has-key($map, $key) {
+    @return map.get($map, $key);
+  }
+
+  @return $default;
+}
+
+/// Create url with svg icon
+/// @param {String} $path - SVG code
+/// @param {Number} $viewbox - Viewbox size
+/// @param {Number} $size - Icon size
+/// @param {Number} $stroke-width - `stroke-width`
+/// @param {*} $color - Color
+/// @return {String} - URL with encoded icon
+@function urlSvg($path, $viewbox: 24, $size: null, $stroke-width: 2, $color: currentColor) {
+  $path: str-replace($path, "\"", "'");
+
+  @if string.index($path, 'svg') {
+    @return "url(\"data:image/svg+xml,#{encode($path,'encode')}\")";
+  }
+
+  $svgProp: "<svg xmlns='http://www.w3.org/2000/svg'";
+
+  @if $viewbox {
+    $svgProp: string.insert($svgProp, " viewBox='0 0 #{$viewbox} #{$viewbox}'", -1);
+  }
+
+  @if $size {
+    $svgProp: string.insert($svgProp, " width='#{$size}' height='#{$size}'", -1);
+  }
+
+  @if $color {
+    $svgProp: string.insert($svgProp, " fill='none' stroke='#{$color}'", -1);
+  }
+
+  @if $stroke-width {
+    $svgProp: string.insert($svgProp, " stroke-linecap='round' stroke-linejoin='round' stroke-width='#{$stroke-width}'", -1);
+  }
+
+  $svgProp: string.insert($svgProp, ">#{$path}</svg>", -1);
+
+  @return "url(\"data:image/svg+xml,#{encode($svgProp,'encode')}\")";
 }

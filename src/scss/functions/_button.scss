@@ -1,0 +1,67 @@
+@use '@sass-fairy/color/color';
+@use 'sass:string';
+@use 'sass:list';
+@use '../../variables/licons-variables' as *;
+
+
+
+@mixin button-size($padding-vertical: 6px, $padding-horizontal: 12px, $font-size: var(--font-text-size), $line-height: var(--line-height-normal), $border-radius: 5px) {
+  button.btn {
+    display: inline-block;
+    padding: $padding-vertical $padding-horizontal;
+    margin-bottom: 0;
+    line-height: $line-height;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: var(--border-width) solid transparent;
+    border-radius: $border-radius;
+    box-shadow: var(--input-shadow);
+    &::before {
+      font-family: licons;
+      content: var(--btn-icon);
+      padding-right: var(--size-4-1);
+    }
+  }
+}
+@mixin button-variant($name, $variable) {
+  $name: string.to-lower-case($name);
+  $icon: list.nth($variable, 1);
+
+  $background: #ffffff; //var(--button-background);
+  @if list.length($variable) > 1 {
+    $background: list.nth($variable, 2);
+  }
+  $color: #222222; //var(--text-color);
+  @if color.is-dark($color) {
+    $color: var(--text-on-accent);
+  }
+  $border: color.mix(black, $background, (color.luminance($background) * 100% - 5%));
+  $border-dark: color.darker($border, -20%);
+  $background-dark: color.darker($background, -10%);
+
+  .btn.#{$name} {
+    color: $color;
+    background-color: $background;
+    border-color: #{color.to-hex($border)};
+    &:is(:hover,:active,.active) {
+      background-color: #{color.to-hex($background-dark)};
+      border-color: #{color.to-hex($border-dark)};
+    }
+    @if $icon {
+      &::before {
+        --btn-icon: #{$icon};
+      }
+    }
+  }
+}
+
+@include button-size();
+
+$buttons: (
+  outlook: $li-msoutlook,
+  scss: $li-scss
+);
+@each $name, $variable in $buttons {
+  @include button-variant($name, $variable);
+}

@@ -1,0 +1,160 @@
+@use '@sass-fairy/exception';
+@use '@sass-fairy/list/list';
+@use '@sass-fairy/string/string';
+@use '@sass-fairy/meta/meta';
+@use '../map' as *;
+@use '../string' as *;
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../variables/variables';
+@use '../../variables/variables-def';
+@use '../../variables/colors';
+
+
+@function _predicate($value, $args...) {
+  @return meta.type-of($value) == 'number' and not math.is-unitless($value);
+}
+@function is-number-and-not-unitless($args...) {
+  $ref: meta.get-function('_predicate');
+  @return meta.call-or-reference($ref, $args...);
+}
+
+/// Get default value
+/// @param {*} $value - Value to strip units
+/// @param {*} $key - if `number` is map than get `name` from `map`
+/// @return {String} - Default value
+@function get-default($value, $key: null) {
+  $start: $value;
+  $value: map-check-get(meta.module-variables('variables'), $value, $value);
+
+  @if list.includes(['map','list'], meta.type-of($value)) {
+    @if string.includes($key, ',') {
+      $keys: string.split($key, ',');
+      $map: map.get($value, list.nth($keys,1));
+      $value: map-check-get($map, list.nth($keys,2), 'none');
+    } @else {
+      $value: map-check-get($value, $key, $default: 'none');
+    }
+  }
+
+  $type: meta.type-of($value);
+  @if list.includes(['color'], $type) {
+    @if meta.inspect($value)=='transparent' {
+      @return '#';
+    } @else {
+      @return color.complement($value);
+    }
+  } @else if list.includes(['string','bool'], $type) {
+    @if $value == "true" or $value == "false" {
+      @return string.unquote($value);
+    }
+    @return meta.inspect($value);
+  } @else if list.includes(['number'], $type) {
+    @return strip-units($value);
+  } @else {
+    //@warn 'Can\27t find color in #{$start} in \27variables\27. Returned null.';
+    @return null;
+  }
+}
+
+/// Extract units
+/// @param {*} $value - Input value
+/// @param {*} $key - if `number` is map than get `name` from `map`
+/// @return {String} - Unit or hex if color or null
+@function get-unit($value, $key: null) {
+  $start: $value;
+  $value: map-check-get(meta.module-variables('variables'), $value, $value);
+
+  $type: meta.type-of($value);
+  @if list.includes(['map','list'], $type) {
+    $value: map.get($value, $key);
+  }
+  @if meta.type-of($value)=='number' and not math.is-unitless($value) {
+    @return string.slice(meta.inspect($value), string.length(meta.inspect($value)) - 1);
+  } @else if meta.type-of($value)=='color' {
+    $str-col: meta.inspect($value);
+    @if string.contains($str-col, 'rgb') {
+      @return 'rgb';
+    } @else if list.includes(['transparent','#'], $str-col) {
+      @return 'hex';
+    } @else {
+      @return 'hex';
+    }
+  } @else {
+    //@warn 'Can\27t find unit of #{$start} in \27variables\27. Returned null.';
+    @return null;
+  }
+}
+
+/// Strip all units from values
+/// @author https://github.com/sass/sass/issues/533#issuecomment-11675408
+/// @param {*} $number - Value to strip units
+/// @param {*} $name - if `number` is map than get `name` from `map`
+/// @return {Number} - Number
+@function strip-units($number, $name: null) {
+  @if meta.type-of($number) == 'list' {
+    $number: list.nth($number, 1);
+  }
+  @else if meta.type-of($number) == 'map' {
+    $number: map.get($number, $name);
+  }
+  @return math.div($number, ($number * 0 + 1));
+}
+
+
+/// Get color
+/// @param {String} $name - Color name
+/// @param {String} $theme - Theme name
+/// @return {Color} - Default value
+@function get-color($name, $array: 'color-named', $theme: false) {
+  $value: map.merge(colors.$colors-named, colors.$colors-theme-secondary);
+  $color: map-check-get(if($theme,map.get($value,$theme),$value), $name, false);
+  @if $color == false {
+    @each $dkey, $dvalue in meta.module-variables('variables-def') {
+      @if $dkey == $name {
+        $color: map-check-get($dvalue, $name, false);
+      }
+    }
+  }
+  @if $color == false {
+    //@warn 'Can\27t find color #{$name}. Returned null.';
+    @return '#';
+  }
+  @return color.complement($color);
+}
+@function hex-var($array, $name) {
+  @each $key, $value in meta.module-variables('colors') {
+    @if $key == $array {
+      @if meta.type-of($value) != map {
+        @error exception.parameter-type('hex-from-var', 'map', $value, 'map');
+      }
+      $color: map-check-get($value, $name, false);
+
+      @if $color == false {
+        @warn 'Can\27t find color in #{$map} - #{$args}. Returned null.';
+        @return '#';
+      }
+      @return color.complement($color);
+    }
+  }
+}
+@function hex-from-var($array, $theme, $name) {
+  @each $key, $value in meta.module-variables('colors') {
+    @if $key == $array {
+      @if meta.type-of(map.get($value, $theme)) != map {
+        @error exception.parameter-type('hex-from-var', 'map', map.get($value, $theme), 'map');
+      }
+      $color: map-check-get(map.get($value,$theme), $name, false);
+
+      @if $color == false {
+        @warn 'Can\27t find color in #{$map} - #{$args}. Returned null.';
+        @return '#';
+      }
+      @return color.complement($color);
+    }
+  }
+}
+@function hex($color) {
+  @return color.complement($color);
+}

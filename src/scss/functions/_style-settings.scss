@@ -1,0 +1,412 @@
+@use '@sass-fairy/list/list';
+@use '@sass-fairy/string/string';
+@use 'sass:map';
+@use 'sass:meta';
+@use '../chars';
+@use '../string' as *;
+@use '../map' as *;
+@use 'unit';
+@use '../../variables/variables-def';
+
+// This is a simple function library to generate Obsidian Style settings with scss.
+// @author @Zenneh https://github.com/zenneh/Obsidian-SCSS-Style-Settings/blob/main/style-settings.scss
+// For reference, check the Obsidian style settings repo
+// - https://github.com/mgmeyers/obsidian-style-settings
+
+
+$ytab: '\9';
+$units: 'px', 'em';
+$formatting: 'hex', 'rgb', 'rgb-values', 'rgb-split', 'hsl', 'hsl-values', 'hsl-split', 'hsl-split-decimal';
+$gradient: 'hsl', 'hex', 'rgb';
+
+
+// @ STYLE FUNCTIONS
+@function Heading($id, $title, $level: 1, $description:'', $collapsed:true) {
+  $map: createDefaultSetting($id, $title, $description, 'heading');
+
+  @if $level < 1 or $level > 6 {
+    @error 'Error \$level: \27#{$level}\27. Must be from 1 to 6.';
+  }
+  $map: map.merge($map, (
+    'collapsed': $collapsed,
+    'level': $level
+  ));
+
+  @return $map;
+}
+@function InfoText($id, $title:'', $description:'', $markdown:true) {
+  @if $markdown == true {
+    $description: markdown($description);
+  }
+  $map: createDefaultSetting($id, $title, $description, 'info-text');
+
+  @if list.includes(chars.$new-string, $description) and $markdown==false {
+    @error 'Found new string in \$description \27#{$description}\27 and \27\$markdown: false\27. Use \27\$markdow: true\27.';
+  }
+  $map: map.merge($map, (
+    'markdown': $markdown
+  ));
+
+  @return $map;
+}
+@function ClsToggle($id, $title:'', $description:'', $addCommand:'', $default:'') {
+  $map: createDefaultSetting($id, $title, $description, 'class-toggle');
+
+  @if $addCommand != '' {
+    $map: map.merge($map, ('addCommand': $addCommand));
+  }
+  @if $default != '' {
+    $map: map.merge($map, (
+      'default': $default
+    ));
+  }
+
+  @return $map;
+}
+@function ClsSelect($id, $title:'', $description:'', $allowEmpty:false, $default:'', $options) {
+  $map: createDefaultSetting($id, $title, $description, 'class-select');
+
+  @if $allowEmpty==false and $default=='' {
+    @error '\$allowEmpty set to \27false\27, \$default should be defined.'
+  }
+  @if $allowEmpty {
+    $map: map.merge($map, ('allowEmpty': $allowEmpty));
+    @if $default != '' {
+      $map: map.merge($map, ('default': $default));
+    }
+  } @else {
+    $map: map.merge($map, ('default': if($default, $default, 'none')));
+  }
+  $map: map.merge($map, (
+    'options': $options
+  ));
+
+  @return $map;
+}
+@function VarText($id, $title:'', $description:'', $default:'', $quotes:false, $value:'') {
+  $map: createDefaultSetting($id, $title, $description, 'variable-text');
+
+  @if $value {
+    $default: unit.get-default($value,$id);
+  }
+  $map: map.merge($map, (
+    'default': '\27' + $default + '\27'
+  ));
+  @if $quotes {
+    $map: map.merge($map, ('quotes': $quotes));
+  }
+
+  @return $map;
+}
+@function VarNumber($id, $title:'', $description:'', $default:'', $format:'', $value:'') {
+  $map: createDefaultSetting($id, $title, $description, 'variable-number');
+
+  @if $value {
+    $default: unit.get-default($value,$id);
+    $format: unit.get-unit($value,$id);
+  }
+  $map: map.merge($map, (
+    'default': $default
+  ));
+  @if $format != '' {
+    $map: map.merge($map, (
+      'format': $format
+    ));
+  }
+
+  @return $map;
+}
+@function VarNumberSlider($id, $title:'', $description:'', $default:'', $format:'', $min, $max, $step:1, $value:'') {
+  $map: createDefaultSetting($id, $title, $description, 'variable-number-slider');
+
+  @if $value {
+    $default: unit.get-default($value,$id);
+    $format: unit.get-unit($value,$id);
+  }
+  $map: map.merge($map, (
+    'default': $default,
+    'max': $max,
+    'min': $min,
+    'step': $step
+  ));
+  @if $format != '' and $format != null {
+    $map: map.merge($map, (
+      'format': $format
+    ));
+  }
+
+  @return $map;
+}
+@function VarSelect($id, $title:'', $description:'', $default:'none', $options, $value:'') {
+  $map: createDefaultSetting($id, $title, $description, 'variable-select');
+
+  @if $value=='' and $options=='' {
+    @error '\$options is not set. \$options should be defined.'
+  }
+  @if $value {
+    $default: unit.get-default($value,$id);
+  }
+  @if meta.type-of($options)=='string' and string.includes($options, '-') {
+    $options: string.split($options, '-');
+  }
+  $map: map.merge($map, (
+    'default': if($default=='none','none',$default),
+    'options': $options
+  ));
+
+  @return $map;
+}
+@function VarColor($id, $title:'', $description:'', $format:hex, $default:'#', $opacity:false, $alt-format:false, $value:'') {
+  @if $value {
+    $name: $id;
+    @if string.starts-with($id,'color-') or string.starts-with($id,'code-') {
+      $name: string.slice($id, string.index($id,'-')+1);
+    } @if $title == '' {
+      $title: str-caseWord($name);
+    } @if $description == '' {
+      $description: 'var(--#{$id})';
+    }
+    @if $value == 'colors-named' {
+      $default: unit.hex-var($value, $name);
+//      $default: unit.get-color($name, $value);
+    } @else {
+      $default: unit.get-default($value, $id);
+    }
+    @if meta.type-of($default) != 'color' {
+      $name: string.slice($default, 13, -2);
+      $color: unit.get-color($name);
+      $default: if($color=='#', map-deep-get(meta.module-variables('variables-def'), 'theme-light', 'color-#{$name}'), $color);
+    }
+    @debug 'id: #{$id} | name: #{$name} | default: #{$default} (#{meta.type-of($default)})';
+  }
+  $map: createDefaultSetting($id, $title, $description, 'variable-color');
+
+  @if $opacity {
+    $map: map.merge($map, ('opacity': $opacity));
+  }
+  @if not list.includes($formatting, $format) {
+    @error 'Unknown \$format \27#{$format}\27. Use one of: \27#{$formatting}\27.';
+  }
+  @if $alt-format {
+    $map: map.merge($map, (
+      'alt-format': ($id, $alt-format)
+    ));
+  }
+  $map: map.merge($map, (
+    'format': $format,
+    'default': '\27#{$default}\27'
+  ));
+
+  @return $map;
+}
+@function VarThemedColor($id, $title:'', $description:'', $format:hex, $light:'#', $dark:'#', $opacity:false, $value:'') {
+  @if $value {
+    $name: if(string.starts-with($id,'color-'), string.slice($id,7), $id);
+    $title: if($title=='', str-caseWord($name), $title);
+    $description: if($description=='','var(--#{$id})', $description);
+    @if string.starts-with($id,'color-') {
+      $light: unit.get-color($name,'light');
+      $dark: unit.get-color($name,'dark');
+    } @else {
+      $default: unit.get-default($value,$id);
+      $name: string.slice($default, 13, -2);
+      $light: map-deep-get(meta.module-variables('variables-def'), 'theme-light', 'color-#{$name}');
+      $dark: map-deep-get(meta.module-variables('variables-def'), 'theme-dark', 'color-#{$name}');
+    }
+  }
+  $map: createDefaultSetting($id, $title, $description, 'variable-themed-color');
+
+  @if $opacity {
+    $map: map.merge($map, ('opacity': $opacity));
+  }
+  @if not list.includes($formatting, $format) {
+    @error 'Unknown \$format \27#{$format}\27. Use one of: \27#{$formatting}\27.';
+  }
+  $map: map.merge($map, (
+    'format': $format,
+    'default-light': '\27#{$light}\27',
+    'default-dark': '\27#{$dark}\27'
+  ));
+
+  @return $map;
+}
+@function ColorGradient($id, $title:'', $description:'', $format:hex, $from:0, $to:100, $step:10, $pad:3) {
+  $map: createDefaultSetting($id, $title, $description, 'color-gradient');
+
+  $map: map.merge($map, (
+    'format': $format,
+    'from': $from,
+    'to': $to,
+    'step': $step,
+    'pad': $pad
+  ));
+
+  @return $map;
+}
+
+// @ PRIVATE FUNCTIONS
+@function markdown($text) {
+  $split: string.split($text, '\d');
+  $string: '';
+
+  @for $i from 1 through list.length($split) {
+    $str: list.nth($split, $i) + if($i<list.length($split),'\d','');
+    $string: string.insert($string, $str, -1);
+  }
+
+  @return string.insert($string, '\|\d', 0);
+}
+@function yamlText($tabs:4, $str:'', $val:'', $end:'\d') {
+  $string: '';
+
+  @if $tabs > 0 {
+    $string: string.repeat($ytab, $tabs);
+  }
+  @if $str != '' {
+    $string: string.insert($string, '#{$str}: ', -1);
+  }
+  @if $val != '' {
+    @if meta.type-of($val) == 'number' {
+      $val: meta.inspect($val);
+    }
+    $string: string.insert($string, $val, -1);
+  }
+  @if $end != '' {
+    $string: string.insert($string, $end, -1);
+  }
+  @return $string;
+}
+@function generateYamlString($map) {
+  $string: '';
+  $list: if(meta.type-of($map)=='map', map.values($map), $map);
+
+  @each $name in $list {
+    $string: string.insert($string, '- #{$name}\d', -1);
+  }
+
+  @return $string;
+}
+
+@function createSettingsMap($map, $settings...){
+  @each $setting in $settings {
+    $map: map.merge($map, $setting);
+  }
+  @return $map;
+}
+
+@function createDefaultSetting($id, $title:'', $description:'', $type) {
+  $setting: map.merge((), ('id': $id));
+  @if $title  != '' {
+    $setting: map.merge($setting, ('title': #{$title}));
+  }
+  @if $description != '' {
+    @if $description=='--' {
+      $description: string.insert($id, '--', 0);
+    }
+    $description: string.replace($description, '\d', '\d' + string.repeat($ytab,3));
+
+    $setting: map.merge($setting, ('description': $description));
+  }
+  $setting: map.merge($setting, ('type': $type));
+
+  @return $setting;
+}
+
+@function Option($value, $label:'') {
+  @if $label == '' {
+    @return ('value': $value)
+  };
+  @return (
+    'label': $label,
+    'value': $value
+  );
+}
+@function ColorOption($id, $format) {
+  @return (
+    'id': $id,
+    'format': $format
+  );
+}
+@function AltFormat($id, $format) {
+  @return (
+    'id': '#{$id}-#{$format}',
+    'format': $format
+  );
+}
+
+// @ generate all settings
+@function generateSettings($settings) {
+  $string: '';
+
+  @each $setting in $settings {
+    $result: generateString($setting, string.repeat($ytab,2));
+    $string: string.insert($result, $string, 0);
+  }
+
+  @return $string;
+}
+@mixin generateMenu($info, $settings) {
+  /* @settings
+  id: #{map.get($info,id)}
+  name: #{map.get($info,name)}
+  collapsed: #{map.get($info,collapsed)}
+  settings:
+  #{generateSettings($settings)}
+  */
+}
+
+// @ generate the settings string for a setting
+@function generateString($settings, $tabs) {
+  $string: $ytab + '-\d';
+
+  @each $key, $value in $settings {
+    @if $key == 'options' {
+     // add option field
+      $string: string.insert(#{$tabs + $key + ': '}, $string, 0); // options
+
+     // add options
+      $optionstring: generateOptionString($value);
+      $string: string.insert($optionstring, $string, 0);
+    } @else if $key == 'alt-format' {
+      $string: string.insert(#{$tabs + $key + ': '}, $string, 0); // options
+      $altformatstring: generateAltFormatString($value);
+      $string: string.insert($altformatstring, $string, 0);
+    } @else {
+      $string: string.insert(#{$tabs + $key + ': ' + $value + '\d'}, $string, 0);
+    }
+  }
+
+  @return $string;
+}
+@function generateOptionString($values) {
+  $string: '\d';
+
+  @each $option in $values {
+    // $option: meta.call($option);
+    @if meta.type-of($option) == 'map' {
+      $value: map.get($map: $option, $key: 'value');
+      @if map.get($map: $option, $key: 'label') {
+        $label: map.get($map: $option, $key: 'label');
+        $string: string.insert(yamlText(3,$end:'-\d'), $string, 0);  // -
+        $string: string.insert(yamlText(4,'label',$label,'\d'), $string, 0);  // label
+        $string: string.insert(yamlText(4,'value',$value,'\d'), $string, 0);  // value
+      } @else {
+        $string: string.insert(string.repeat($ytab,3) + '- ' + $value + '\d', $string, 0);  // value
+      }
+    } @else {
+      $string: string.insert(#{string.repeat($ytab,3) + '- ' + $option + '\d'}, $string, 0);
+    }
+  }
+  @return $string;
+}
+@function generateAltFormatString($values){
+  $string: '\d';
+  $id: list.nth($values, 1);
+
+  @each $format in list.nth($values, 2) {
+    $string: string.insert(#{yamlText(3,$end:'-\d')}, $string, 0);  // -
+    $string: string.insert(#{yamlText(4,'id','#{$id}-#{$format}','\d')}, $string, 0);  // label
+    $string: string.insert(#{yamlText(4,'format',$format,'\d')}, $string, 0);  // value
+  }
+  @return $string;
+}

@@ -1,0 +1,61 @@
+/* #region {Regex Mark} */
+
+:is(.modal, .mod-settings):has(.RegexMark) {
+  .modal-close-button { display: none; }
+}
+@scope (.modal, .mod-settings) to (.vertical-tab-content.RegexMark) {
+  padding-inline-start: var(--size-4-4);
+  padding-inline-end: var(--size-4-4);
+
+  p > code {
+    font-family: var(--font-monospace);
+    font-size: 13px;
+    color: var(--text-error);
+    vertical-align: text-bottom;
+    padding: var(--inline-code-padding);
+    background-color: var(--inline-code-background);
+    color: var(--inline-code-color);
+    border-radius: var(--inline-code-radius);
+  }
+  input[type=text] {
+    font-family: var(--font-monospace);
+    font-size: 13px;
+    padding-inline: 3px;
+  }
+  button {
+    &[aria-label~=Verify] {
+      background-color: var(--text-accent);
+      color: var(--text-on-accent);
+    }
+    &.import-save {
+      background-color: var(--text-success) !important;
+    }
+  }
+  .regex-setting {
+    .setting-item-control {
+      gap: var(--size-4-1);
+
+      .extra-setting-button {
+        padding: var(--size-4-1) 1px;
+        &:nth-last-child(1),
+        &:nth-last-child(2) { padding: var(--size-4-1) 0; }
+      }
+      input[type=text] {
+        &.regex-input   { width: 100% !important; }
+        &.min-width     { max-width: 1ch !important; }
+      }
+    }
+  }
+  .callout {
+    --callout-border-width: 0 !important;
+    .callout-title {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+    &[data-callout=note] .callout-content {
+      p:nth-child(1),
+      p:nth-last-child(1) { display: none; }
+    }
+  }
+}
+/* #endregion {Regex Mark} */

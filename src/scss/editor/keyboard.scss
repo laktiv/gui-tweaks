@@ -4,7 +4,7 @@
 .cm-hmd-html-begin ~ .cm-tag,
 .cm-hmd-html-end,
 .cm-line:has(.cm-hmd-html-begin) {
-  font-family: var(--font-monospace);
+  font-family: var(--font-mono);
 }
 
 :is(kbd, .setting-hotkey, .prompt-instruction-command) {
@@ -13,7 +13,7 @@
   justify-content: center;
   display: inline-flex;
   font-size: var(--font-smaller);
-  font-family: -apple-system, BlinkMacSystemFont, var(--font-monospace);
+  font-family: var(----font-mono);
   border: 1px solid var(--text-muted);
   border-bottom-width: var(--size-2-1);
   border-radius: calc(var(--radius-s) - 1px);
@@ -25,13 +25,6 @@
   line-height: var(--line-height-tight);
   margin: 0.1em 0.15em;
   min-width: var(--size-4-6);
-
-  /* 
-  text-transform: capitalize;
-  padding: 2px var(--size-2-3); 
-  border-radius: 6px;
-  border: 1px solid var(--color-base-35);
-  */
 }
 
 .setting-hotkey.mod-empty {

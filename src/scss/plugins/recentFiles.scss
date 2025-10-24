@@ -1,0 +1,15 @@
+@use '../utils.scss' as *;
+
+/* #region {recent-files} */
+
+@include use-panel('recent-files') {
+  .recent-files-file-delete {
+    margin-inline-end: var(--size-4-1);
+  }
+
+  .is-active .recent-files-file-delete {
+    color: var(--text-on-accent);
+  }
+}
+
+/* #endregion {recent-files} */

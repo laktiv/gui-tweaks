@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../utils.scss' as *;
 
 /* #region {property} */
@@ -30,29 +31,33 @@
     transition: background-color var(--animation-fast);
   }
 
-  [data-property-key='tag'] {
-    @include use-icon-override('.lucide-list', 'tags');
+  $properties-icons: (
+    tag:        ('.lucide-list', 'lucide-tags'),
+    alias:      ('.lucide-list', 'lucide-corner-up-right'),
+    cssclasses: ('.lucide-list', 'lucide-toggle-right'),
+    markmap:    ('.svg-icon', 'lucide-git-fork'),
+    title:      ('.svg-icon', 'lucide-heading'),
+    author:     ('.svg-icon', 'lucide-user-round'),
+    source:     ('.svg-icon', 'lucide-link'),
+    published:  ('.svg-icon', 'lucide-calendar-days', '*=date')
+  );
+  
+  @each $key, $map in $properties-icons {
+    $sel: "[data-property-key=#{$key}]";
+    @if list.length($map) > 2 {
+      $sel: ':is([data-property-key=#{$key}], [data-property-key#{list.nth($map,3)}])';
+    } 
+
+    #{$sel} #{list.nth($map,1)} {
+      -webkit-mask: var(--#{list.nth($map,2)}) no-repeat;
+      @extend %icons;
+    }
   }
-  [data-property-key='alias'] {
-    @include use-icon-override('.lucide-text', 'forward');
-  }
-  [data-property-key='cssclasses'] {
-    @include use-icon-override('.lucide-list', 'toggle-left');
-  }
-  [data-property-key='markmap'] {
-    @include use-icon-override('.lucide-file-question', 'git-fork');
-  }
-  [data-property-key='title'] {
-    @include use-icon-override('.lucide-text', 'heading');
-  }
-  [data-property-key='author'] {
-    @include use-icon-override('.lucide-text', 'user-round');
-  }
-  [data-property-key='source'] {
-    @include use-icon-override('.lucide-text', 'link');
-  }
-  :is([data-property-key='published'], [data-property-key*='date']) {
-    @include use-icon-override('.lucide-text', 'calendar');
+  
+  %icons {
+    -webkit-mask-size: 100% 100%;
+    background-color: currentColor;
+    & path { display: none; }
   }
 }
 
