@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "developer2006.svg-gallery",
+    "edwinhuish.better-comments-next",
+    "mrmlnc.vscode-scss",
+    "naumovs.color-highlight",
+    "redhat.vscode-yaml",
+    "spmeesseman.vscode-taskexplorer",
+    "yzhang.markdown-all-in-one"
+  ]
+}

@@ -1,0 +1,41 @@
+/* #region keyboard */
+
+.cm-hmd-html-begin,
+.cm-hmd-html-begin ~ .cm-tag,
+.cm-hmd-html-end,
+.cm-line:has(.cm-hmd-html-begin) {
+  font-family: var(--font-monospace);
+}
+
+:is(kbd, .setting-hotkey, .prompt-instruction-command) {
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  font-size: var(--font-smaller);
+  font-family: -apple-system, BlinkMacSystemFont, var(--font-monospace);
+  border: 1px solid var(--text-muted);
+  border-bottom-width: var(--size-2-1);
+  border-radius: calc(var(--radius-s) - 1px);
+  background-color: var(--color-base-10);
+  padding: 0.15em 0.6em;
+  box-sizing: border-box;
+  box-shadow: 0 1px 1px var(--color-base-35);
+  gap: 0.5em;
+  line-height: var(--line-height-tight);
+  margin: 0.1em 0.15em;
+  min-width: var(--size-4-6);
+
+  /* 
+  text-transform: capitalize;
+  padding: 2px var(--size-2-3); 
+  border-radius: 6px;
+  border: 1px solid var(--color-base-35);
+  */
+}
+
+.setting-hotkey.mod-empty {
+  color: var(--text-faint);
+}
+
+/* #endregion keyboard */

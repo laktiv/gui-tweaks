@@ -1,0 +1,24 @@
+{
+  "region": {
+    "scope": "snippets,javascript,css,scss,html",
+    "prefix": [
+      "reg",
+      "#reg"
+    ],
+    "body": [
+      "$BLOCK_COMMENT_START #region ${1:name} $BLOCK_COMMENT_END",
+      "$0",
+      "$BLOCK_COMMENT_START #endregion $BLOCK_COMMENT_END"
+    ],
+    "description": "Add #region block"
+  },
+  "opacity05": {
+    "scope": "scss",
+    "prefix": "opacity05",
+    "body": [
+      "opacity: 0.5;",
+      "pointer-events: none;"
+    ],
+    "description": "Menu no click"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "useTabs": false,
+  "bracketSpacing": false,
+  "semi": false,
+  "singleQuote": true,
+  "endOfLine": "lf",
+  "overrides": [
+
+    { "files": ["*.md"],         "options":{"parser": "markdown", 
+      "tabWidth": 4,
+      "useTabs": true 
+    }},
+    
+    { "files": ["*.js","*.jsx"], "options":{"parser": "babel", 
+      "proseWrap": "always", 
+      "bracketSameLine": true, 
+      "bracketSpacing": true 
+    }},
+    
+    { "files": ["*.json"],        "options":{"parser": "json", 
+      "useTabs": true 
+    }},
+    
+    { "files": ["*.css"],         "options":{"parser": "css", 
+      "tabWidth": 2, 
+      "useTabs": true, 
+      "semi": true, 
+      "singleQuote": true 
+    }},
+    
+    { "files": ["*.scss"],        "options":{"parser": "scss", 
+      "tabWidth": 4, 
+      "useTabs": true 
+    }},
+    
+    { "files": ["*.html","*.htm"], "options":{"parser": "html", 
+      "htmlWhitespaceSensitivity": "css" 
+    }},
+    
+    { "files": ["*.xml","*.svg"],  "options":{"parser": "xml", 
+      "singleQuote": true 
+    }},
+    
+    { "files": ["*.yaml","*.yml"], "options":{"parser": "yaml", 
+      "tabWidth": 2
+    }}
+  ]
+}

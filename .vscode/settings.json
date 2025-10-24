@@ -1,0 +1,130 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "better-comments.highlightPlainText": true,
+  "better-comments.multilineComments": true,
+  "commentTranslate.browse.mode": "contrast",
+  "commentTranslate.targetLanguage": "uk",
+  "compile-hero.disable-compile-files-on-did-save-code": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'Fira Core', 'JetBrains Mono', Consolas, 'Courier New', monospace",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "eslint.rules.customizations": [
+    {
+      "rule": "*-dangle",
+      "severity": "off"
+    },
+    {
+      "rule": "*-indent",
+      "severity": "off"
+    },
+    {
+      "rule": "*-newline",
+      "severity": "off"
+    },
+    {
+      "rule": "*-order",
+      "severity": "off"
+    },
+    {
+      "rule": "*-spaces",
+      "severity": "off"
+    },
+    {
+      "rule": "*-spacing",
+      "severity": "off"
+    },
+    {
+      "rule": "*quotes",
+      "severity": "off"
+    },
+    {
+      "rule": "*semi",
+      "severity": "off"
+    },
+    {
+      "rule": "@stylistic/*",
+      "severity": "off"
+    }
+  ],
+  "eslint.validate": [
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "markdown",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "yaml"
+  ],
+  "files.associations": {
+    "*.yaml": "yaml"
+  },
+  "files.autoSave": "afterDelay",
+  "files.exclude": {
+    ".gitattributes": true,
+    ".gitignore": false,
+    ".*ignore": true,
+    ".*rc.{json,yml,yaml}": true,
+    "package-lock.json": true,
+    "node_modules": true,
+    "LICENSE": true
+  },
+  "files.watcherExclude": {
+    "**/logs": true
+  },
+  "prettier.enable": false,
+  "prettier.endOfLine": "lf",
+  "prettier.eslintIntegration": true,
+  "prettier.ignorePath": "node_modules",
+  "prettier.printWidth": 120,
+  "prettier.proseWrap": "never",
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.stylelintIntegration": true,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5",
+  "prettier.tslintIntegration": true,
+  "prettier.useTabs": true,
+  "taskExplorer.exclude": [
+    "**/.vscode-test/**",
+    "**/Assets/**",
+    "**/bin/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/doc/**",
+    "**/example/**",
+    "**/examples/**",
+    "**/ext/**",
+    "**/node_modules/**/Gruntfile.js",
+    "**/obj/**",
+    "**/out/**",
+    "**/output/**",
+    "**/packages/**",
+    "**/release/**",
+    "**/releases/**",
+    "**/samples/**",
+    "**/sdks/**",
+    "**/static/**",
+    "**/target/**",
+    "**/test/**",
+    "**/third_party/**",
+    "**/vendor/**",
+    "**/work/**"
+  ],
+  "yaml.format.enable": true
+}

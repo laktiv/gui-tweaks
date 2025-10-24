@@ -1,0 +1,281 @@
+{
+	"version": "2.0.0",
+	"presentation": {
+		"panel": "sass"
+	},
+	"tasks": [{
+			"label": "build-[🐗] Build Theme",
+			"detail": "Runs Grunt task",
+			"type": "shell",
+			"command": "grunt",
+			"args": ["Build Theme"],
+			"problemMatcher": [],
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "grunt"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "build-[🖼️] Fonts",
+			"type": "shell",
+			"detail": "Runs conversation src/svg ▶ src/css/fonts",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"build-🖼️ svg-Minimify SVG",
+				"build-🖼️ svg-Build All fonts",
+				"build-🐗 grunt-embed-fonts"
+			],
+			"clear": true,
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "build-[🛠️] SASS",
+			"type": "shell",
+			"detail": "Runs conversation src/scss ▶ src/css",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"build-🛠️ scss-editor",
+				"build-🛠️ scss-plugins",
+				"build-🛠️ scss-foundation"
+			],
+			"clear": true,
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "build-🖼️ svg-Build All fonts",
+			"type": "npm",
+			"script": "SVG-Build All fonts",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "npm"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "build-🖼️ svg-Minimify SVG",
+			"type": "npm",
+			"script": "SVG-Minimify svg",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "npm"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "build-🛠️ scss-editor",
+			"type": "shell",
+			"command": "sass --update --no-source-map --no-charset --color --stop-on-error src/scss/editor:src/css/editor src/scss/Modules:src/css/modules",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "build-🛠️ scss-foundation",
+			"type": "shell",
+			"command": "sass --update --no-source-map --no-charset --color --stop-on-error src/scss/foundation:src/css/foundation src/scss/foundation/fonts:src/fonts",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{ "label": "build-🛠️ scss-components",
+			"type": "shell",
+			"command": "sass --update --no-source-map --no-charset --color --stop-on-error src/scss/components:src/css/components && node build/copy-content.js \"components\"",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{ "label": "build-🛠️ scss-modules",
+			"type": "shell",
+			"command": "sass --update --no-source-map --no-charset --color --stop-on-error src/scss/modules:src/css/modules && node build/copy-content.js \"modules\"",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{ "label": "build-🛠️ scss-plugins",
+			"type": "shell",
+			"command": "sass --update --no-source-map --no-charset --color --stop-on-error src/scss/plugins:src/css/plugins && node build/copy-content.js \"plugins\"",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "dev-🌐 update-🖼️ svg Update font Uicons",
+			"type": "npm",
+			"script": "Update-Update font Uicons",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "npm"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "dev-💻 main-🌐 npm update",
+			"type": "npm",
+			"script": "Update-npm-update",
+			"group": "dev",
+			"presentation": {
+				"reveal": "always",
+				"panel": "npm"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "dev-💻 main-🗑️ npm clean cache",
+			"type": "shell",
+			"command": "npm cache clean --force",
+			"group": "dev",
+			"presentation": {
+				"reveal": "always",
+				"panel": "npm"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "dev-📂 Copy-SCSS font variables",
+			"type": "shell",
+			"command": "COPY D:\\Dev\\obsidian-lia-tweaks\\src\\font\\licons\\licons.scss D:\\Dev\\obsidian-lia-tweaks\\src\\scss\\foundations\\fonts\\_licons-variables.scss /y && COPY D:\\Dev\\obsidian-lia-tweaks\\src\\font\\flaticons\\flaticons.scss D:\\Dev\\obsidian-lia-tweaks\\src\\scss\\foundations\\fonts\\_flaticons-variables.scss /y",
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "cmd"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "dev-📂 Copy-src/fonts => NewScript/obsidian/fonts",
+			"type": "shell",
+			"command": "COPY .\\src\\fonts\\flaticons\\*.woff2 D:\\Obsidian\\NewScript\\.obsidian\\fonts\\ /y && COPY .\\src\\fonts\\licons\\*.woff2 D:\\Obsidian\\NewScript\\.obsidian\\fonts\\ /y",
+			"group": "dev",
+			"presentation": {
+				"reveal": "always",
+				"panel": "cmd"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "dev-📜 npm-lint",
+			"type": "npm",
+			"script": "dev-npm-lint",
+			"problemMatcher": ["$eslint-stylish"],
+			"group": "dev",
+			"presentation": {
+				"reveal": "always",
+				"panel": "npm"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "dev-📜 npm-npm dev",
+			"type": "npm",
+			"script": "menu-dev",
+			"problemMatcher": [],
+			"detail": "sass \"src/scss/_menu-dev.scss\" \"D:/Obsidian/Theme Test/.obsidian/snippets/dev_menu.css\" --no-source-map --no-charset --color",
+			"group": "dev",
+			"presentation": {
+				"reveal": "always",
+				"panel": "npm"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "⚙️ Dev [modules]",
+			"type": "shell",
+			"command": "sass --no-source-map --color \"src/scss/dev-modules.scss\" \"D:/Obsidian/NewScript/.obsidian/snippets/cards.css\"",
+			"group": "dev",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "⚙️ Dev [style-settings]",
+			"type": "shell",
+			"command": "sass --watch --no-source-map --color \"src/scss/dev-stylemenu.scss\" \"D:/Obsidian/dev-vault/.obsidian/snippets/[style-settings].css\"",
+			"group": "dev",
+			"presentation": {
+				"reveal": "always",
+				"panel": "sass"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "🌈 Build Theme",
+			"type": "shell",
+			"command": "echo Building 🌈 ObsidianTweaks.css",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"build-[🛠️] SASS",
+				"build-[🖼️] Fonts",
+				"build-[🐗] Build Theme"
+			],
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "Main"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "🌈 Build Theme no icons",
+			"type": "shell",
+			"command": "echo Building 🌈 ObsidianTweaks.css",
+			"dependsOrder": "sequence",
+			"dependsOn": ["build-[🛠️] SASS", "build-[🐗] Build Theme"],
+			"group": "build",
+			"presentation": {
+				"reveal": "always",
+				"panel": "Main"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "_dev.scss -> [latest-modules]",
+			"type": "shell",
+			"command": "npm run dev-latest modules",
+			"group": "dev",
+			"presentation": {
+				"reveal": "always",
+				"panel": "npm"
+			},
+			"isBackground": false
+		},
+		{
+			"label": "dev_window -> [☀️ window]",
+			"type": "shell",
+			"command": "sass \"src/scss/_dev-window.scss\" \"D:/Obsidian/NewScript/.obsidian/snippets/[☀️ window].css\" --no-source-map --no-charset --color",
+			"group": "dev",
+			"isBackground": false
+		}
+	]
+}

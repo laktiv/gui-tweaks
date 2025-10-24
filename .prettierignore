@@ -1,0 +1,4 @@
+.prettierignore
+_dump
+dist
+node_modules

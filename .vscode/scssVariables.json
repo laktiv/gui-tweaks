@@ -1,0 +1,42 @@
+{
+  "example-background-color": {
+    "value": {
+      "light": "#ffffff",
+      "dark": "#1e1e1e"
+    },
+    "description": "Example background color variable",
+    "cssAttributesSupported": [
+      "background-color"
+    ]
+  },
+  "example-text-color": {
+    "value": {
+      "light": "#000000",
+      "dark": "#ffffff"
+    },
+    "description": "Example text color variable",
+    "cssAttributesSupported": [
+      "color"
+    ]
+  },
+  "radius": {
+    "value": {
+      "radius-xs": "2px",
+      "radius-s": "4px",
+      "radius-sm": "5px",
+      "radius-ms": "6px",
+      "radius-m": "8px",
+      "radius-ml": "10px",
+      "radius-l": "12px",
+      "radius-xl": "16px"
+    },
+    "description": "Radiuses",
+    "cssAttributesSupported": [
+      "border-radius",
+      "border-top-left-radius",
+      "border-top-right-radius",
+      "border-bottom-right-radius",
+      "border-bottom-left-radius"
+    ]
+  }
+}
