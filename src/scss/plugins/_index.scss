@@ -1,7 +1,7 @@
+@forward '../variables';
+
 /* #region PLUGINS */
 
-@use './listCallouts.scss';
-@use './recentFiles.scss';
-@use './regexMark.scss';
+@use './community/_index.scss';
 
 /* #endregion PLUGINS */

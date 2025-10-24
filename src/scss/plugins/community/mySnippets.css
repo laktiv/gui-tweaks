@@ -1,0 +1,19 @@
+/* #region {MySnippets} */
+.MySnippets-statusbar-menu {
+	--interactive-normal: var(--accent-inactive);
+	width: 300px;
+	.menu-item .checkbox-container { order: 1; }
+	.MS-OpenSnippet {
+		box-shadow: none;
+		background: transparent;
+		&:hover {
+			box-shadow: var(--input-shadow);
+			svg path { fill: var(--interactive-accent) !important; }
+		}
+		svg { fill: var(--interactive-accent) !important; }
+	}
+}
+.theme-light .MS-OpenSnippet svg path {
+	fill: var(--text-accent) !important;
+}
+/* #endregion {MySnippets} */

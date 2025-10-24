@@ -1,0 +1,98 @@
+/* #region {Advanced Canvas} */
+/* @advanced-canvas-node-style
+key: validation-state
+label: Validation State
+options:
+  - label: Stateless
+    value: null
+    icon: circle-help
+  - label: Approved
+    value: approved
+    icon: circle-check
+  - label: Pending
+    value: pending
+    icon: circle-dot
+  - label: Rejected
+    value: rejected
+    icon: circle-x
+*/
+/* @advanced-canvas-node-style
+key: stickynote-state
+label: Stiky Note
+options:
+  - label: None
+    value: null
+    icon: square
+  - label: Red
+    value: sticky001
+    icon: sticky-note
+  - label: Yellow
+    value: sticky002
+    icon: sticky-note
+  - label: Green
+    value: sticky003
+    icon: sticky-note
+  - label: Cyan
+    value: sticky004
+    icon: sticky-note
+  - label: Blue
+    value: sticky005
+    icon: sticky-note
+  - label: Purple
+    value: sticky006
+    icon: sticky-note
+  - label: Custom
+    value: sticky000
+    icon: sticky-note
+*/
+
+.canvas-node {
+  &[data-validation-state] .canvas-node-content::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1em;
+  }
+  &[data-validation-state=approved] .canvas-node-content::after { content: "✔️"; }
+  &[data-validation-state=pending] .canvas-node-content::after { content: "⏳"; }
+  &[data-validation-state=rejected] .canvas-node-content::after { content: "❌"; }
+
+  &[data-stickynote-state] {
+    border: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    position: absolute;
+    width: 458px;
+    height: 331px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 7px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 0;
+    .canvas-node-container { border: none; border-radius: 0; }
+    .canvas-wrapper { --shadow-stationary: none; }
+    }
+  &[data-stickynote-state=sticky001] .canvas-node-container { background: #FFC1C1; }
+  &[data-stickynote-state=sticky002] .canvas-node-container { background: #fffac1; }
+  &[data-stickynote-state=sticky003] .canvas-node-container { background: #d7ffc1; }
+  &[data-stickynote-state=sticky004] .canvas-node-container { background: #cdfffd; }
+  &[data-stickynote-state=sticky005] .canvas-node-container { background: #c1d2ff; }
+  &[data-stickynote-state=sticky006] .canvas-node-container { background: #fbc1ff; }
+  &[data-stickynote-state=sticky000] {
+    box-shadow: 0px 4px 4px rgba(var(--canvas-color), 0.4 ), 0px 7px 5px rgba(var(--canvas-color), 0.4);
+    .canvas-node-container { background: rgba(var(--canvas-color), 0.2); backdrop-filter: blur(6px); }
+  }
+
+  /* Any CSS selector can be used (As long as the .canvas-node element has the CSS variable defined)  */
+  &[data-shape=pill] {
+    /* The zoom factor at which the node's content gets unrendered (Zoom level can reach from 1 to -4) */
+    --variable-breakpoint: 0.5;
+  }
+}
+.menu#style-menu-dropdown-submenu {
+  .menu-item:nth-child(2) svg.lucide-sticky-note { fill: #FFC1C1; }
+  .menu-item:nth-child(3) svg.lucide-sticky-note { fill: #fffac1; }
+  .menu-item:nth-child(4) svg.lucide-sticky-note { fill: #d7ffc1; }
+  .menu-item:nth-child(5) svg.lucide-sticky-note { fill: #cdfffd; }
+  .menu-item:nth-child(6) svg.lucide-sticky-note { fill: #c1d2ff; }
+  .menu-item:nth-child(7) svg.lucide-sticky-note { fill: #fbc1ff; }
+}
+/* #endregion {Advanced Canvas} */

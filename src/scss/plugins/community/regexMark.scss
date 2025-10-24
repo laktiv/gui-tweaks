@@ -1,0 +1,89 @@
+/* #region {Regex Mark} */
+.role-assnt::before { content: "🤖"; }
+.role-user::before { content: "👤"; }
+.role-openai { 
+  background-color: green;
+  &::before { 
+    content: ""; 
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    left: 0;
+    width: var(--font-text-size);
+    height: var(--font-text-size);
+    display: inline-block;
+    vertical-align: baseline;
+    padding-right: var(--size-4-1);
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+  } 
+}
+.role-openai::before {
+  -webkit-mask-image: var(--icon-openai) !important;
+  background-color: #0080F7;
+}
+
+:is(.modal, .mod-settings) :is(.modal-content, .vertical-tab-content).RegexMark {
+  padding-inline-start: var(--size-4-4);
+  padding-inline-end: var(--size-4-4);
+
+  .regex-setting .setting-item-control {
+    gap: var(--size-4-1);
+
+    .extra-setting-button {
+      padding: var(--size-4-1) 1px;
+
+      &:nth-last-child(1),
+      &:nth-last-child(2) { padding: var(--size-4-1) 0; }
+    }
+  }
+
+  .callout {
+    --callout-border-width: 0 !important;
+
+    .callout-title { padding: var(--size-4-1) auto var(--size-4-1) auto; }
+    .callout-content * { margin: var(--size-2-1) auto 0 auto; }
+  }
+
+  p[dir=auto],
+  .callout {
+    font-size: var(--font-ui-small);
+  }
+
+  p > code {
+    font-family: var(--font-mono);
+    font-size: var(--font-ui-smaller);
+    color: var(--code-operator);
+    vertical-align: text-bottom;
+    padding: var(--inline-code-padding);
+    background-color: var(--inline-code-background);
+    border-radius: var(--inline-code-radius);
+  }
+
+  input.extra-width.css-input {
+    max-width: 25% !important;
+  }
+
+  input[type=text],
+  textarea {
+    width: 100% !important;
+
+    &.regex-input { width: 100% !important; }
+    &.min-width { max-width: 1ch !important; }
+  }
+
+  button:is([aria-label~=Verify], .import-save),
+  div.setting-item-control a:is(.download) {
+    background-color: var(--text-accent);
+    color: var(--text-on-accent);
+  }
+}
+
+.modal:has(.modal-content.RegexMark) {
+  width: 45vw;
+  height: 70vh;
+
+  textarea { height: 90%; }
+}
+
+/* #endregion {Regex Mark} */

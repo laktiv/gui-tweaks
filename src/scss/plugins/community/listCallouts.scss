@@ -28,7 +28,7 @@ body:not(.disable-list-styling) .lc-list-callout > .list-bullet::after {
   content: ">";
 }
 
-/* List Callout Default colors */
+/* ~ List Callout Default colors */
 .lc-list-callout {
   &[data-callout="!"] {
     --lc-callout-color: var(--color-red-rgb) !important;
@@ -47,7 +47,7 @@ body:not(.disable-list-styling) .lc-list-callout > .list-bullet::after {
   }
 }
 
-/* List Callouts Settings */
+/* ~ List Callouts Settings */
 .vertical-tab-content {
   .lc-setting {
     display: flex;
@@ -133,4 +133,13 @@ body:not(.disable-list-styling) .lc-list-callout > .list-bullet::after {
   }
 }
 
+/* ~ `{-} {+}` : Pros/Cons styling */
+.lc-list-callout:has(.lc-list-marker svg:is(.lucide-minus-circle, .lucide-plus-circle)) {
+  .list-bullet {
+    display: none;
+  }
+  .cm-list-1:nth-last-of-type(1) {
+    font-weight: var(--font-semibold);
+  }
+}
 /* #endregion {List Callouts} */

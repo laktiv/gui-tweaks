@@ -1,6 +1,7 @@
 /* #region VARIABLES */
 /* #region (Variables - Icons) */
 body {
+  /* Lucide Icons */
   --lucide-calendar-days: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M8 2v4m8-4v4'/%3E%3Crect width='18' height='18' x='3' y='4' rx='2'/%3E%3Cpath d='M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01'/%3E%3C/svg%3E");
   --lucide-circle-ellipsis: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M17 12h.01'/%3E%3Cpath d='M12 12h.01'/%3E%3Cpath d='M7 12h.01'/%3E%3C/svg%3E");
   --lucide-circle-help: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3m.08 4h.01'/%3E%3C/svg%3E");
@@ -23,6 +24,7 @@ body {
   --lucide-toggle-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='15' cy='12' r='3'/%3E%3Crect width='20' height='14' x='2' y='5' rx='7'/%3E%3C/svg%3E");
   --lucide-trello: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Crect width='18' height='18' x='3' y='3' rx='2' ry='2'/%3E%3Cpath d='M7 7h3v9H7zm7 0h3v5h-3z'/%3E%3C/svg%3E");
   --lucide-user-round: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Ccircle cx='12' cy='8' r='5'/%3E%3Cpath d='M20 21a8 8 0 0 0-16 0'/%3E%3C/svg%3E");
+  /* Apps Icons */
   --icon-deepl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M20.907 4.94 12.685.186a1.36 1.36 0 0 0-1.37 0l-8.222 4.77a1.38 1.38 0 0 0-.686 1.183v9.526a1.38 1.38 0 0 0 .686 1.194l8.222 4.76.062.035L15.425 24l-.011-2.061.008-1.145.003.02v-.385a.69.69 0 0 1 .296-.56l.264-.151.127-.07h-.008l4.803-2.78a1.38 1.38 0 0 0 .686-1.195V6.135a1.38 1.38 0 0 0-.686-1.195m-9.853 9.688a1.43 1.43 0 0 1-.4 1.384 1.41 1.41 0 0 1-1.97 0 1.42 1.42 0 0 1 0-2.063 1.41 1.41 0 0 1 2.042.076l3.328-1.916.687.386zm5.77-2.414a1.41 1.41 0 0 1-1.97 0 1.43 1.43 0 0 1-.37-1.478l-.013.008L10.72 8.57l-.057.057a1.41 1.41 0 0 1-1.97 0 1.42 1.42 0 0 1 0-2.063 1.41 1.41 0 0 1 1.972 0c.394.377.524.918.39 1.407l3.781 2.2.019-.019a1.41 1.41 0 0 1 1.972 0 1.427 1.427 0 0 1 0 2.061z'/%3E%3C/svg%3E");
   --icon-deepseek: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' stroke='null' d='M23.776 4.634c-.255-.125-.365.113-.514.234-.05.04-.094.09-.137.137-.372.397-.807.659-1.376.628-.831-.047-1.54.214-2.168.85-.133-.784-.576-1.252-1.25-1.552-.353-.156-.71-.313-.957-.652-.172-.241-.22-.51-.306-.776-.055-.16-.11-.323-.294-.35-.2-.032-.278.136-.357.276-.313.573-.435 1.205-.423 1.845.028 1.439.635 2.585 1.843 3.4.137.094.172.188.13.324-.083.28-.181.554-.267.835-.055.18-.138.218-.33.14a5.5 5.5 0 0 1-1.74-1.182c-.86-.83-1.635-1.747-2.604-2.464a11 11 0 0 0-.69-.472c-.988-.96.13-1.747.388-1.84.27-.099.095-.434-.78-.43-.874.004-1.674.296-2.693.686a3 3 0 0 1-.467.137 9.6 9.6 0 0 0-2.889-.102c-1.89.21-3.399 1.104-4.508 2.629C.054 8.768-.26 10.85.124 13.023c.404 2.289 1.572 4.184 3.368 5.666 1.862 1.537 4.007 2.29 6.453 2.145 1.486-.085 3.14-.284 5.006-1.864.47.234.964.328 1.784.398.631.058 1.239-.031 1.71-.129.736-.156.685-.838.419-.963-2.16-1.006-1.686-.597-2.117-.928 1.097-1.299 2.752-2.648 3.399-7.02.05-.347.007-.565 0-.846-.004-.172.035-.238.23-.257a4.2 4.2 0 0 0 1.55-.476c1.399-.765 1.964-2.02 2.097-3.526.02-.23-.004-.468-.247-.588zM11.58 18.182c-2.094-1.645-3.11-2.188-3.529-2.164-.392.023-.321.472-.235.764.09.289.208.488.373.741.113.168.192.417-.114.605-.674.417-1.847-.14-1.902-.168-1.364-.803-2.505-1.864-3.308-3.315-.777-1.396-1.227-2.893-1.302-4.493-.02-.386.094-.522.478-.592a4.7 4.7 0 0 1 1.533-.04c2.137.313 3.956 1.268 5.48 2.781.871.862 1.53 1.892 2.208 2.898.721 1.068 1.498 2.086 2.486 2.92.349.293.627.516.893.68-.803.09-2.144.109-3.061-.617zm1.012-6.529a.31.31 0 0 1 .301-.233.3.3 0 0 1 .106.02q.065.022.114.073a.3.3 0 0 1 .086.215.307.307 0 0 1-.31.308.3.3 0 0 1-.302-.257.3.3 0 0 1 .005-.126zm3.007 1.714a1.6 1.6 0 0 1-.491.12 1.25 1.25 0 0 1-.8-.254c-.274-.23-.47-.358-.552-.76a1.7 1.7 0 0 1 .015-.589c.07-.328-.008-.538-.239-.73-.188-.155-.427-.198-.69-.198a.56.56 0 0 1-.255-.078c-.11-.055-.2-.191-.113-.359.027-.054.16-.187.192-.21.357-.203.768-.137 1.148.015.353.144.62.41 1.004.784.392.452.463.577.686.916.177.266.337.539.447.85.056.164.005.302-.149.4-.062.04-.134.067-.203.093z'/%3E%3C/svg%3E");
   --icon-github: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M12 2.247a10 10 0 0 0-3.162 19.487c.5.088.687-.212.687-.475c0-.237-.012-1.025-.012-1.862c-2.513.462-3.163-.613-3.363-1.175a3.64 3.64 0 0 0-1.025-1.413c-.35-.187-.85-.65-.013-.662a2 2 0 0 1 1.538 1.025a2.137 2.137 0 0 0 2.912.825a2.1 2.1 0 0 1 .638-1.338c-2.225-.25-4.55-1.112-4.55-4.937a3.9 3.9 0 0 1 1.025-2.688a3.6 3.6 0 0 1 .1-2.65s.837-.262 2.75 1.025a9.43 9.43 0 0 1 5 0c1.912-1.3 2.75-1.025 2.75-1.025a3.6 3.6 0 0 1 .1 2.65a3.87 3.87 0 0 1 1.025 2.688c0 3.837-2.338 4.687-4.562 4.937a2.37 2.37 0 0 1 .674 1.85c0 1.338-.012 2.413-.012 2.75c0 .263.187.575.687.475A10.005 10.005 0 0 0 12 2.247'/%3E%3C/svg%3E");
@@ -48,7 +50,7 @@ svg.svg-icon.lucide-wand-2 {
 }
 svg.svg-icon.lucide-wand-sparkles {
   -webkit-mask-image: var(--icon-openai) !important;
-  background-color: #0080F7;
+  background-color: #0080f7;
 }
 svg.svg-icon.lucide-wheat {
   -webkit-mask-image: var(--icon-deepl) !important;
@@ -68,250 +70,30 @@ svg.svg-icon:is(.lucide-nut, .lucide-tree-palm, .lucide-wand-2, .lucide-wand-spa
   height: 24;
 }
 
+.workspace-ribbon .side-dock-ribbon-action[aria-label="Folder Canvas"] svg {
+  -webkit-mask-size: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-shirt-folded-buttons-icon lucide-shirt-folded-buttons'%3E%3Cpath d='M19 21H5a2 2 0 0 1-2-2V4c0-.6.4-1 1-1h12c.6 0 1 .4 1 1v15a2 2 0 1 0 4 0V7c0-.6-.4-1-1-1h-3'/%3E%3Cpath d='M7 3v1a3 3 0 1 0 6 0V3'/%3E%3Cpath d='M10 11h.01'/%3E%3Cpath d='M10 15h.01'/%3E%3C/svg%3E");
+}
+
 /* #endregion (Variables - Icons) */
 body {
   --font-mono: "Fira Code", -apple-system, BlinkMacSystemFont, var(--font-monospace);
 }
 
 /* #endregion VARIABLES */
-/* #region EDITOR */
-/* #region {keyboard} */
-.cm-hmd-html-begin,
-.cm-hmd-html-begin ~ .cm-tag,
-.cm-hmd-html-end,
-.cm-line:has(.cm-hmd-html-begin) {
+/* #region WORKSPACE */
+/* #region {Settings} */
+.modal:has(.modal-content) input[type=text],
+.modal:has(.modal-content) textarea,
+.mod-settings .vertical-tab-content input[type=text],
+.mod-settings .vertical-tab-content textarea {
   font-family: var(--font-mono);
+  font-size: var(--font-ui-smaller);
+  padding-inline: var(--size-2-1);
+}
+.modal:has(.modal-content) .clickable-icon:has(svg.lucide-trash-2),
+.mod-settings .vertical-tab-content .clickable-icon:has(svg.lucide-trash-2) {
+  color: var(--text-error);
 }
 
-:is(kbd, .setting-hotkey, .prompt-instruction-command) {
-  user-select: none;
-  align-items: center;
-  justify-content: center;
-  display: inline-flex;
-  font-size: var(--font-smaller);
-  font-family: var(----font-mono);
-  border: 1px solid var(--text-muted);
-  border-bottom-width: var(--size-2-1);
-  border-radius: calc(var(--radius-s) - 1px);
-  background-color: var(--color-base-10);
-  padding: 0.15em 0.6em;
-  box-sizing: border-box;
-  box-shadow: 0 1px 1px var(--color-base-35);
-  gap: 0.5em;
-  line-height: var(--line-height-tight);
-  margin: 0.1em 0.15em;
-  min-width: var(--size-4-6);
-}
-
-.setting-hotkey.mod-empty {
-  color: var(--text-faint);
-}
-
-/* #endregion {keyboard} */
-/* #region {property} */
-.metadata-container {
-  margin-block-end: var(--size-4-2);
-  transition: var(--animation);
-  --metadata-property-background-hover: var(--background-primary-alt);
-  --metadata-label-background-active: var(--background-primary);
-  --metadata-input-background-active: var(--background-primary);
-  --pill-radius: var(--size-4-1);
-  --pill-focus-width: calc(100% + var(--size-4-2));
-}
-.prop-outline .metadata-container {
-  transform: none;
-  --metadata-padding: var(--radius-m);
-  --metadata-background: var(--background-primary-alt);
-  --metadata-border-width: 1px;
-  --metadata-border-radius: var(--radius-m);
-}
-.prop-hide-preview .metadata-container {
-  --metadata-display-reading: none;
-}
-.metadata-container .metadata-add-button {
-  padding: var(--size-4-1);
-  margin-top: var(--size-4-2);
-  gap: var(--size-2-3);
-  transition: background-color var(--animation-fast);
-}
-.metadata-container [data-property-key=tag] .lucide-list {
-  -webkit-mask: var(--lucide-tags) no-repeat;
-}
-.metadata-container [data-property-key=alias] .lucide-list {
-  -webkit-mask: var(--lucide-corner-up-right) no-repeat;
-}
-.metadata-container [data-property-key=cssclasses] .lucide-list {
-  -webkit-mask: var(--lucide-toggle-right) no-repeat;
-}
-.metadata-container [data-property-key=markmap] .svg-icon {
-  -webkit-mask: var(--lucide-git-fork) no-repeat;
-}
-.metadata-container [data-property-key=title] .svg-icon {
-  -webkit-mask: var(--lucide-heading) no-repeat;
-}
-.metadata-container [data-property-key=author] .svg-icon {
-  -webkit-mask: var(--lucide-user-round) no-repeat;
-}
-.metadata-container [data-property-key=source] .svg-icon {
-  -webkit-mask: var(--lucide-link) no-repeat;
-}
-.metadata-container :is([data-property-key=published], [data-property-key*=date]) .svg-icon {
-  -webkit-mask: var(--lucide-calendar-days) no-repeat;
-}
-.metadata-container [data-property-key=tag] .lucide-list, .metadata-container [data-property-key=alias] .lucide-list, .metadata-container [data-property-key=cssclasses] .lucide-list, .metadata-container [data-property-key=markmap] .svg-icon, .metadata-container [data-property-key=title] .svg-icon, .metadata-container [data-property-key=author] .svg-icon, .metadata-container [data-property-key=source] .svg-icon, .metadata-container :is([data-property-key=published], [data-property-key*=date]) .svg-icon {
-  -webkit-mask-size: 100% 100%;
-  background-color: currentColor;
-}
-.metadata-container [data-property-key=tag] .lucide-list path, .metadata-container [data-property-key=alias] .lucide-list path, .metadata-container [data-property-key=cssclasses] .lucide-list path, .metadata-container [data-property-key=markmap] .svg-icon path, .metadata-container [data-property-key=title] .svg-icon path, .metadata-container [data-property-key=author] .svg-icon path, .metadata-container [data-property-key=source] .svg-icon path, .metadata-container :is([data-property-key=published], [data-property-key*=date]) .svg-icon path {
-  display: none;
-}
-
-.metadata-property-icon,
-input.metadata-property-key-input,
-.multi-select-pill,
-.multi-select-input {
-  line-height: calc(var(--line-height-normal) / 1.5);
-  height: calc(var(--line-height-normal) / 1.5);
-}
-
-.metadata-property-key {
-  padding-block: var(--size-2-1);
-}
-
-.metadata-property:not([data-property-key=tags]) .metadata-property-key-input {
-  padding-block: var(--size-2-3);
-}
-
-.multi-select-pill {
-  transition: var(--animation);
-}
-
-.metadata-property[data-property-key=cssclasses] {
-  --pill-padding-x: 0.4em;
-}
-.metadata-property[data-property-key=cssclasses] .multi-select-pill {
-  line-height: 1;
-}
-
-.multi-select-pill-remove-button {
-  cursor: pointer;
-}
-
-.multi-select-pill-content {
-  line-height: 1.6;
-}
-
-/* #endregion {property} */
-/* #endregion EDITOR */
-/* #region PLUGINS */
-/* #region {List Callouts} */
-.markdown-rendered .lc-list-callout {
-  padding-block: var(--list-spacing-default);
-  --list-spacing-default: 0.075em;
-}
-
-/* does nothing if list spacing is default (i.e., when line height is Compact) */
-.lc-list-callout > .list-bullet {
-  padding-top: calc(var(--list-spacing) - var(--list-spacing-default));
-}
-
-.lc-li-wrapper {
-  padding-block: calc(var(--list-spacing) - var(--list-spacing-default));
-  padding-inline-end: 0.75em;
-  z-index: 0;
-}
-.lc-li-wrapper::after {
-  border-radius: var(--radius-s);
-}
-
-.lc-list-callout :is(strong, .cm-strong) {
-  color: rgb(var(--lc-callout-color), 0.8);
-}
-
-body:not(.disable-list-styling) .lc-list-callout > .list-bullet::after {
-  content: ">";
-}
-
-/* List Callout Default colors */
-.lc-list-callout[data-callout="!"] {
-  --lc-callout-color: var(--color-red-rgb) !important;
-}
-.lc-list-callout[data-callout="~"] {
-  --lc-callout-color: var(--color-purple-rgb) !important;
-}
-.lc-list-callout[data-callout="@"] {
-  --lc-callout-color: var(--color-cyan-rgb) !important;
-}
-.lc-list-callout[data-callout="$"] {
-  --lc-callout-color: var(--color-green-rgb) !important;
-}
-
-/* List Callouts Settings */
-.vertical-tab-content .lc-setting {
-  display: flex;
-  flex-direction: column;
-  border-block: none;
-  border-inline: 1px solid transparent;
-  padding: 14px 18px;
-}
-.vertical-tab-content .lc-setting:last-child {
-  background-color: var(--setting-item-bg);
-  border: 1px solid var(--setting-item-border-color);
-  border-radius: var(--radius-ml);
-  box-shadow: var(--shadow-setting-item);
-  margin-block: 12px;
-}
-.vertical-tab-content .lc-callout-container {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--trans-strong-30);
-  border-radius: var(--radius-m);
-  box-shadow: var(--shadow-input);
-  padding: 6px 16px 6px;
-  margin: 6px 4px 8px;
-}
-.vertical-tab-content .lc-input-container {
-  margin-inline: 12px 16px;
-}
-.vertical-tab-content .lc-setting .lc-input-container > * {
-  margin-inline-end: 6px;
-}
-.vertical-tab-content .lc-input-container input:last-of-type {
-  width: unset;
-}
-.vertical-tab-content .lc-input-container input:first-of-type {
-  width: 40px;
-  font-weight: var(--font-medium);
-  text-align: center;
-}
-.vertical-tab-content .lc-input-container button:first-of-type {
-  font-weight: var(--font-medium);
-}
-.vertical-tab-content .lc-setting .cm-line {
-  width: 100%;
-}
-.vertical-tab-content .lc-setting .cm-line .lc-list-bg {
-  padding-block: 0;
-}
-.vertical-tab-content .lc-setting .cm-line .lc-list-bg::after {
-  border-radius: var(--radius-s);
-}
-.vertical-tab-content .lc-setting:nth-child(4) .cm-line {
-  --lc-callout-color: var(--color-red-rgb) !important;
-}
-.vertical-tab-content .lc-setting:nth-child(5) .cm-line {
-  --lc-callout-color: var(--color-purple-rgb) !important;
-}
-.vertical-tab-content .lc-setting:nth-child(6) .cm-line {
-  --lc-callout-color: var(--color-cyan-rgb) !important;
-}
-.vertical-tab-content .lc-setting:nth-child(7) .cm-line {
-  --lc-callout-color: var(--color-green-rgb) !important;
-}
-.vertical-tab-content .lc-setting:last-child .lc-input-right-align button {
-  background-image: var(--hotkey-gradient);
-  color: var(--text-on-accent);
-}
-
-/* #endregion {List Callouts} */
-/* #endregion PLUGINS */
+/* #endregion {Settings} */
+/* #endregion WORKSPACE */

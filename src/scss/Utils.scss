@@ -20,7 +20,6 @@
 }
 
 @mixin use-no-plugin($selector, $suffix: '') {
-  // prettier-ignore
   body:is(:not(.css-settings-manager),#{string.unquote($selector)})#{string.unquote($suffix)} {
     @content;
   }

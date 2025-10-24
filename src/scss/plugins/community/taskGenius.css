@@ -1,0 +1,7 @@
+/* #region {Task Genius} */
+.genius-hide-projects .task-genius-container .task-metadata .task-project {
+  display: none;
+}
+
+.workspace-leaf-content[data-type=task-genius-view] {}
+/* #endregion {Task Genius} */

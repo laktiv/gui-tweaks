@@ -1,0 +1,300 @@
+/* #region {Apply Patterns} */
+@scope (.mod-settings, .modal-content) to (.vertical-tab-content-container) {
+  .patterns-description-el,
+  .import-export-div,
+  :is(.pattern-cursor, .commands) .setting-item-description {
+    font-size: 0.8em;
+    h4:empty { display: none; }
+    h2,h3,p { margin-bottom: 0; }
+    p,ul { margin-top: 0; }
+  }
+  textarea[placeholder],
+  .command .setting-item:nth-child(1) input[placeholder] {
+    width: 500px;
+    min-height: fit-content !important;
+    font-family: var(--font-monospace);
+    font-size: 11px; }
+  .pattern-cursor textarea[placeholder],
+  input[placeholder] {
+    width: 300px; }
+  .import-export-div {
+    button { width: 90px; } }
+}
+/* #endregion {Apply Patterns} */
+
+/* #region {Priettier} */
+@scope (.mod-settings, .modal) to (:scope .modal-content > .vertical-tab-content) {
+  .prettier-settings__mapping-header button {
+    --text-color: var(--text-on-accent) !important;
+    color: var(--text-on-accent) !important;
+    background-color: var(--interactive-accent) !important;
+  }
+  .prettier-settings__mapping:not(:nth-child(1)) button {
+    background-color: var(--button-gray-background-color) !important;
+  }
+  .prettier-settings__mapping:not(:nth-child(1)) button, .prettier-settings__mapping:not(:nth-child(1)) button svg.svg-icon {
+    color: var(--text-on-accent) !important;
+  }
+  .setting-item-extra + .setting-item button {
+    background-color: var(--background-modifier-error) !important;
+    color: var(--text-on-accent);
+  }
+  .prettier-settings__mapping-text {
+    font-family: var(--font-monospace-tweaks, var(--font-monospace)) !important;
+    font-size: var(--font-smallest) !important;
+    width: 100%;
+  }
+  .prettier-settings__textarea {
+    font-family: var(--font-monospace-tweaks, var(--font-monospace)) !important;
+    font-size: var(--font-ui-smallest) !important;
+    width: 100%;
+  }
+}
+/* #endregion {Priettier} */
+
+/* #region {Paste Reformatter} */
+@scope (.mod-settings, .modal-workflow-definition) to (:scope .modal-content > .vertical-tab-content) {
+  .regex-replacements-container {
+    margin-left: 0; }
+  input.regex-input {
+    font-family: var(--font-monospace-tweaks, var(--font-monospace));
+    font-size: var(--font-ui-smaller);
+    padding: var(--size-2-1) var(--size-2-2) !important; }
+  .regex-th {
+    &-pattern { width: 52%; }
+    &-replacement { width: 40%; }
+    &-actions { width: 8% !important; } }
+  .regex-td {
+    padding: 2px !important; }
+  .regex-td-actions button {
+    background-color: var(--text-error) !important;
+    color: var(--text-on-accent); }
+}
+/* #endregion {Paste Reformatter} */
+
+/* #region {Recent Files} */
+.workspace-leaf-content[data-type=recent-files] {
+  .nav-file-title {
+    padding: var(--size-4-1) var(--size-4-2);
+    border-radius: var(--radius-s);
+    &:hover {
+      background-color: var(--nav-item-background-hover);
+      &:not(.is-active) .recent-files-file-delete {
+        color: var(--accent-active);
+      }
+    }
+    &.is-active {
+      background-color: var(--accent-active);
+      &::after { content: none; }
+    }
+  }
+  .recent-files-file-delete {
+    color: var(--text-on-accent);
+  }
+}
+/* #endregion {Recent Files} */
+
+/* #region {CSS Editor} */
+.workspace-leaf-content[data-type=css-editor-view] {
+  .cm-editor .cm-content[data-language=css], & :not(.cm-gutter) {
+    font-family: var(--font-mono);
+    font-size: var(--font-ui-smaller);
+  }
+}
+.csseditor-hide-gutter .cm-gutter.cm-lineNumbers {
+  display: none !important;
+}
+/* #endregion {CSS Editor} */
+
+/* #region {Plugin Update Tracker} */
+.workspace-leaf-content[data-type$=AVAILABLE_PLUGIN_UPDATES] {
+  :is(h2, h3) { font-family: var(--font-interface); }
+  .view-content div.sc-cxabCf.fWKyTt { border-radius: var(--modal-radius); }
+}
+/* #endregion {Plugin Update Tracker} */
+
+/* #region {Hide Commands setting} */
+.vertical-tab-content.hide-commands-settings {
+  .hide-commands-collapsible-content {
+    display: inline-block;
+    border-left: 0; }
+  .setting-item {
+    display: inline-block; }
+  .setting-item-name {
+    font-size: var(--font-ui-smaller) !important; }
+  textarea {
+    width: 320px !important;
+    margin-right: 6px;
+    font-family: var(--font-mono);
+    font-size: var(--font-ui-smaller);
+    height: 125px !important;
+    resize: vertical; }
+}
+/* #endregion {hide-commands-setting} */
+
+/* #region {Callout Manager} */
+body:not(:is(.is-mobile, .mod-macos, .mod-windows, .mod-linux)) {
+	.workspace,
+	.app-container::before { display: none !important; }
+}
+/* #endregion {Callout Manager} */
+
+/* #region {Snippet downloader} */
+summary.snippets-downloader-summary {
+  margin-top: 1em;
+}
+textarea[placeholder='BadCSS I hate, badCSS*'] {
+  min-height: 100px !important;
+}
+/* #endregion {Snippet downloader} */
+
+/* #region {JS-Engine} */
+.js-engine-execution-stats-button {
+  right: 28px;
+}
+/* #endregion {JS-Engine} */
+
+/* #region {Iconize} */
+.obsidian-icon-folder-icon {
+  +.nav-file-title-content,
+  +.nav-folder-title-content {
+    padding: unset;
+    &::before { display: none; }
+  }
+}
+.iconize-inline-title-wrapper {
+  justify-content: center;
+}
+/* #endregion {Iconize} */
+
+/* #region {Icon-folder} */
+.obsidian-icon-folder-icon {
+  + .nav-file-title-content,
+  + .nav-folder-title-content {
+    padding: unset;
+    &::before { display: none; }
+  }
+}
+/* #endregion {Icon-folder} */
+
+/* #region {Folder Note} */
+@container style(--fas-rainbow-folders: enable) {
+	.has-folder-note {
+		color: var(--nav-item-color); }
+}
+/* #endregion {Folder Note} */
+
+/* #region {Tasks-Modal} */
+.tasks-modal {
+  font-size: var(--font-ui-medium);
+  .tasks-modal-priority-section,
+  .tasks-modal-dates-section,
+  .tasks-modal-dependencies-section {
+    box-sizing: border-box;
+    border: var(--border-width) solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    background-color: var(--background-primary);
+    padding: 12px 16px;
+  }
+  .tasks-modal-button-section { background-color: transparent; }
+  .accesskey { text-decoration: none; }
+  hr { visibility: hidden; }
+}
+/* #endregion {Tasks-Modal} */
+
+/* #region {Custom Frames} */
+.vertical-tab-content:has(button.custom-frames-show) {
+  textarea[cols='50'][rows='5'] {
+    font-family: var(--font-mono);
+    font-size: var(--font-small);
+    width: 100%; }
+
+  .mod-right-split .workspace-tab-container {
+    height: 0 !important; }
+}
+
+.custom-frames-frame {
+  background: transparent !important;
+}
+.custom-frames-view {
+  margin-bottom: 0 !important;
+  & webview { padding: 0 !important; }
+}
+.custom-frames-show {
+  + div .setting-item:nth-child(3) input {
+    width: 100%; } /* url input */
+}
+.custom-frames-support {
+  display: none; }
+/* #endregion {Custom Frames} */
+
+/* #region {API-Request} */
+ /* Fix small pop-up window for showing request */
+  .modal:has(.modal-content > :nth-child(2).modal_textarea) {
+    width: 800px;
+    height: 600px;
+    padding: 15px;
+    overflow: hidden;
+
+    textarea.modal_textarea {
+      width: 100%;
+      height: calc(100% - 2px);
+      box-sizing: border-box;
+      font-family: var(--font-monospace);
+      font-size: var(--font-ui-smallest); }
+  }
+
+ /* Fix small inputs in settings */
+  .modal, .mod-settings {
+    details :is(input, textarea) {
+      min-width: 250px;
+      font-family: var(--font-monospace);
+      font-size: var(--font-ui-smallest); }
+  }
+/* #endregion {API-Request} */
+
+/* #region {Inline AI} */
+.cm-completionLabel {
+  font-weight: bold;
+}
+.mod-settings {
+  textarea {
+    &.wide-text-settings {
+      font-family: var(--font-monospace);
+      font-size: var(--font-smallest);
+      width: 500px; }
+    &[placeholder='Command prompt'] {
+      font-size: var(--font-smallest);
+      width: 300px; } }
+}
+/* #endregion {Inline AI} */
+
+/* #region {AI Editor} */
+.modal .modal-header:has(.modal-title:empty){
+  display: none;
+}
+.modal-content {
+  textarea[spellcheck=false] {
+    font-family: var(--font-mono);
+  }
+}
+/* #endregion {AI Editor} */
+
+/* #region {Commander} */
+.cmdr.clickable-icon svg.svg-icon {
+  color: var(--icon-color);
+  opacity: var(--icon-opacity);
+}
+body:not(.is-mobile) {
+  .cmdr.cmdr-adder,
+  /*.cmdr.clickable-icon.cmdr-page-header[class="note-toolbar:open-item-suggester"}*/
+  .cmdr.clickable-icon[data-cmdr='lucide-terminal-squareМеню команд'] {
+    display: none !important;
+  }
+}
+.cmdr-sep-con {
+  &:not(:empty) { padding: var(--size-4-3) !important; }
+  &:empty { display: none; }
+}
+.cmdr-commands-empty { display: none; }
+/* #endregion {Commander} */
