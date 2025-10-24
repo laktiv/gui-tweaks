@@ -1,0 +1,96 @@
+@use '../utils.scss' as *;
+
+/* #region {property} */
+
+.metadata-container {
+  margin-block-end: var(--size-4-2);
+  transition: var(--animation);
+  --metadata-property-background-hover: var(--background-primary-alt);
+  --metadata-label-background-active: var(--background-primary);
+  --metadata-input-background-active: var(--background-primary);
+  --pill-radius: var(--size-4-1);
+  --pill-focus-width: calc(100% + var(--size-4-2));
+
+  .prop-outline & {
+    transform: none;
+    --metadata-padding: var(--radius-m);
+    --metadata-background: var(--background-primary-alt);
+    --metadata-border-width: 1px;
+    --metadata-border-radius: var(--radius-m);
+  }
+
+  .prop-hide-preview & {
+    --metadata-display-reading: none;
+  }
+
+  .metadata-add-button {
+    padding: var(--size-4-1);
+    margin-top: var(--size-4-2);
+    gap: var(--size-2-3);
+    transition: background-color var(--animation-fast);
+  }
+
+  [data-property-key='tag'] {
+    @include use-icon-override('.lucide-list', 'tags');
+  }
+  [data-property-key='alias'] {
+    @include use-icon-override('.lucide-text', 'forward');
+  }
+  [data-property-key='cssclasses'] {
+    @include use-icon-override('.lucide-list', 'toggle-left');
+  }
+  [data-property-key='markmap'] {
+    @include use-icon-override('.lucide-file-question', 'git-fork');
+  }
+  [data-property-key='title'] {
+    @include use-icon-override('.lucide-text', 'heading');
+  }
+  [data-property-key='author'] {
+    @include use-icon-override('.lucide-text', 'user-round');
+  }
+  [data-property-key='source'] {
+    @include use-icon-override('.lucide-text', 'link');
+  }
+  :is([data-property-key='published'], [data-property-key*='date']) {
+    @include use-icon-override('.lucide-text', 'calendar');
+  }
+}
+
+.metadata-property-icon,
+input.metadata-property-key-input,
+.multi-select-pill,
+.multi-select-input {
+  line-height: calc(var(--line-height-normal) / 1.5);
+  height: calc(var(--line-height-normal) / 1.5);
+}
+
+.metadata-property-key {
+  padding-block: var(--size-2-1);
+}
+
+.metadata-property:not([data-property-key='tags'])
+  .metadata-property-key-input {
+  padding-block: var(--size-2-3);
+}
+
+.multi-select-pill {
+  transition: var(--animation);
+}
+
+.metadata-property[data-property-key='cssclasses'] {
+  --pill-padding-x: 0.4em;
+
+  .multi-select-pill {
+    line-height: 1;
+  }
+}
+
+.multi-select-pill-remove-button {
+  cursor: pointer;
+}
+
+.multi-select-pill-content {
+  line-height: 1.6;
+}
+
+/* #endregion {property} */
