@@ -1,7 +1,17 @@
 @forward '../variables';
 
-/* #region WORKSPACE */
+/* #region [[WORKSPACE]] */
 
+@use './button.css';
+@use './color-picker.css';
+@use './data-type.css';
+@use './document-search.css';
+@use './scrollbar.css';
 @use './settings.scss';
+@use './statusbar.css';
+@use './titlebar.css';
+@use './tooltip.scss';
+@use './vault.css';
+@use './view-header.css';
 
-/* #endregion WORKSPACE */
+/* #endregion [[WORKSPACE]] */

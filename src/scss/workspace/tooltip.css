@@ -1,0 +1,10 @@
+/* #region {Tooltip} */
+.tooltip {
+	animation: pop-down var(--animation) forwards ease-in-out;
+	&.mod-right,
+	&.mod-left {
+		animation: pop-right var(--animation) forwards ease-in-out; }
+	&.mod-error {
+		color: var(--text-error); }
+}
+/* #endregion {Tooltip} */

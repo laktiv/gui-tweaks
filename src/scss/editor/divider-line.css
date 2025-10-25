@@ -1,0 +1,44 @@
+/* #region {Divider line} */
+.markdown-source-view.mod-cm6 .hr,
+.view-content hr {
+	border-radius: 30px;
+	width: 90% !important;
+	margin-inline: auto !important;
+}
+
+ /* This version uses *emphesis text* after the underline - it could be used in reading view! */
+ /* https://gist.github.com/Moyf/1ab2cb62f673a1a8bff3643af7326598.pibb */
+ /* + Live Editing */
+	.hr+.cm-line:has(.cm-em) {
+		text-align: center !important;
+		padding-top: 0px !important;
+		padding-bottom: 0.6em;
+		border-bottom: 2px solid var(--hr-color);
+		opacity: 1.0;
+		.cm-em {
+			opacity: 0.6;
+		}
+	}
+
+ /* + Source Mode */
+	.HyperMD-hr+.cm-line:has(.cm-em) {
+		text-align: center !important;
+		border-bottom: 2px solid var(--hr-color);
+	}
+
+ /* + Reading Mode */
+	.el-hr+.el-p:has(em) {
+		text-align: center;
+		padding-top: 0px !important;
+		p {
+			margin-top: 0em;
+			opacity: 0.8;
+			margin-bottom: 0em;
+		}
+		margin-top: -1.5em;
+		margin-bottom: 0em;
+		padding-bottom: 0.4em;
+		border-bottom: 2px solid var(--hr-color);
+		opacity: 1.0;
+	}
+/* #endregion {Divider line} */

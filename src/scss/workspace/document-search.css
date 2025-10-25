@@ -1,0 +1,8 @@
+/* #region {Document-Search} */
+.obsidian-search-match-highlight {
+  background-color: var(--background-secondary); }
+.settings-search-container {
+  padding: 0; }
+.search-result-file-title {
+  font-weight: var(--font-medium); }
+/* #endregion {Document-Search} */

@@ -5,8 +5,8 @@
     .cm-comment-end { display: none; }
   }
   .cm-active.cm-line {
-    .cm-comment-start { padding-right: 2px;  }
-    .cm-comment-end { padding-left: 2px; }
+    .cm-comment-start { padding-right: var(--footnote-padding-inline);  }
+    .cm-comment-end { padding-left: var(--footnote-padding-inline); }
   }
 
  /* ~ Style comments text */
@@ -15,8 +15,8 @@
     --link-external-decoration: none;
     --link-external-decoration-hover: none;
 
-    border-top: 1px solid var(--divider-color);
-    border-bottom: 1px solid var(--divider-color);
+    border-top: var(--input-border-width) solid var(--divider-color);
+    border-bottom: var(--input-border-width) solid var(--divider-color);
     font-style: italic;
     display: inline-block;
     color: var(--color-base-70);
@@ -26,21 +26,21 @@
   .cm-line:has(.cm-comment-start) + .cm-line .cm-comment,
   .cm-comment-start + .cm-comment {
     border-left: 1px solid var(--divider-color);
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    padding-left: 2px;
+    border-top-left-radius: var(--radius-s);
+    border-bottom-left-radius: var(--radius-s);
+    padding-left: var(--footnote-padding-inline);
   }
   .cm-line:has(+.cm-line .cm-comment-end) .cm-comment,
   .cm-comment:has(+.cm-comment-end) {
-    border-right: 1px solid var(--divider-color);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding-right: 2px;
+    border-right: var(--input-border-width) solid var(--divider-color);
+    border-top-right-radius: var(--radius-s);
+    border-bottom-right-radius: var(--radius-s);
+    padding-right: var(--footnote-padding-inline);
   }
 
  /* ~ Comment text becomes smaller */
   .cm-comment {
-    font-size: 0.8em;
+    font-size: var(--font-smaller);
     opacity: 0.8;
   }
 
@@ -64,6 +64,6 @@
  /* ~ Source code mode, only center text and add underline */
   .HyperMD-hr+.cm-comment {
     text-align: center !important;
-    border-bottom: 2px solid var(--hr-color);
+    border-bottom: var(--input-border-width-focus) solid var(--hr-color);
   }
 /* #endregion {Comment} */

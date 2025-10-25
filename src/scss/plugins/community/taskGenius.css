@@ -1,7 +1,31 @@
 /* #region {Task Genius} */
+body {
+  --tg-modal-width: 40vw;
+}
+
 .genius-hide-projects .task-genius-container .task-metadata .task-project {
   display: none;
 }
-
 .workspace-leaf-content[data-type=task-genius-view] {}
+
+/* + `.tg-hide-subitems-project` */
+  [data-type=task-genius-view] {
+    .task-parent-container .task-item-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end; }
+  }
+
+/* + `.tg-hide-subitems-project` */
+  .tg-hide-subitems-project {
+    :is(.review-content, .projects-content) .task-item-metadata,
+    .task-children-container .task-metadata {
+      .task-project { display: none; }
+    }
+  }
+
+/* + `--tg-modal-width` */
+  .task-genius-view-config-modal {
+    width: max(var(--tg-modal-width), 500px); 
+  }
 /* #endregion {Task Genius} */

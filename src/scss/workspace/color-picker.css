@@ -1,0 +1,46 @@
+/* #region {Color Picker} */
+body {
+  --picker-upsize: 1;
+}
+.pcr-app {
+  &.visible {
+    background-color: var(--color-base-60);
+    border-radius: var(--radius-m);
+    gap: var(--size-4-1); }
+
+  .pcr-interaction {
+    .pcr-type {
+      color: var(--text-normal);
+      background: var(--color-base-50);
+      opacity: 0.85; }
+
+    .pcr-type.active {
+      background: var(--text-accent);
+      border: unset;
+      opacity: unset; }
+
+    .pcr-cancel {
+      color: var(--text-normal);
+      background: var(--color-red); }
+
+    .pcr-save {
+      color: var(--text-normal);
+      background: var(--color-blue); }
+  }
+  .pcr-swatches >button {
+    &,
+    &::before,
+    &::after { border-radius: var(--pickr-border-radius); } }
+}
+.pickr-reset button {
+  scale: var(--picker-upsize);
+}
+.themed-color-wrapper {
+  .theme-dark .pickr-reset button {
+    color: #d3d3d3aa;
+    background-color: #191d28aa;}
+  .theme-light .pickr-reset button{
+    color: #080808aa;
+    background-color: #edebe5aa;}
+}
+/* #endregion {Color Picker} */

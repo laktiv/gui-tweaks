@@ -1,0 +1,29 @@
+/* #region {View header} */
+/* Compact Tab Header https://github.com/replete/obsidian-minimal-theme-css-snippets */
+.tab-header-compact {
+  @container style(--hider-tab-header: none) {
+    .view-header {
+      --header-height: 26px !important;
+      padding-left: 0;
+      gap: 0px;
+      .view-header-title-container {
+        justify-content: start;
+        .view-header-title {
+          color: var(--text-muted) !important;
+
+          &:hover,
+          &:focus { color: var(--icon-color) !important; } }
+      }
+      .view-actions {
+        .clickable-icon {
+          border-radius: 0;
+          color: var(--icon-color) !important;
+          transition: var(--animation) color ease-in;
+          padding-left: var(--size-2-1);
+          padding-right: var(--size-2-1); }
+        &:hover .clickable-icon {
+          color: var(--icon-opacity) !important; } }
+    }
+  }
+}
+/* #endregion {View header} */

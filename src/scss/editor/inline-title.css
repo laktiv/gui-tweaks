@@ -1,0 +1,22 @@
+/* #region {Inline title} */
+ /* + `.embedded-backlinks` : embedded-backlinks */
+	.embedded-backlinks {
+		border-top: 1px solid var(--divider-color);
+	}
+
+ /* + `.inline-title` : title transform & color */
+	.inline-title {
+    text-align: var(--inline-title-text-align);
+		text-transform: var(--inline-title-text-transform);
+    color: var(--inline-title-color);
+	}
+
+ /* + .inline-title-divider` : Inline title divider */
+	.inline-title-divider {
+		.inline-title {
+			border-bottom: 1px solid var(--divider-color);
+			padding-bottom: var(--size-4-3);
+			margin-bottom: var(--size-4-3);
+		}
+	}
+/* #endregion {Inline title} */

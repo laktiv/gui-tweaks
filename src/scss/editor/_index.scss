@@ -3,9 +3,13 @@
 
 /* #region [[EDITOR]] */
 
+@use './text.css';
+@use './inline-title.css';
+@use './list.css';
 @use './comments.css';
+@use './divider-line.css';
 @use './highlighter.css';
-@use './keyboard.scss';
+@use './keyboard.css';
 @use './property.scss';
 @use './footnote.css';
 

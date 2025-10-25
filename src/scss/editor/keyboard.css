@@ -1,5 +1,4 @@
-/* #region {keyboard} */
-
+/* #region {Keyboard} */
 .cm-hmd-html-begin,
 .cm-hmd-html-begin ~ .cm-tag,
 .cm-hmd-html-end,
@@ -30,5 +29,4 @@
 .setting-hotkey.mod-empty {
   color: var(--text-faint);
 }
-
-/* #endregion {keyboard} */
+/* #endregion {Keyboard} */

@@ -1,0 +1,653 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'variables-def' as def;
+@use 'colors' as col;
+
+
+// @ COMPONENTS
+  $navigation: (
+    nav-file-tag-color: var(--color-base-50),
+    nav-file-tag-bg: transparent,
+    nav-icon-size-small: calc(var(--font-text-size) - 1px),
+    nav-icon-size-smaller: calc(var(--font-text-size) - 2px),
+    nav-icon-size-big: calc(var(--font-text-size) + 1px),
+    nav-icon-size-bigger: calc(var(--font-text-size) + 2px),
+    nav-indentation-guide-color: string.unquote('hsla(var(--accent-h), 20%, 50%, 0.2)'),
+    nav-indentation-guide-width: 1.8px,
+    file-icon-color: var(--text-faint),
+    collapse-icon-color: var(--color-base-70),
+    collapse-icon-color-collapsed: var(--color-base-70)
+  );
+  $slider: (
+    slider-thumb-border-width: 2px,
+    slider-thumb-border-color: string.unquote('hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.75)'),
+    slider-track-background: string.unquote('hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5)'),
+    slider-track-height: 3px
+  );
+  $tab: (
+    #tab-style: string.unquote('none'),
+    tab-text-color-focused-active-current: var(--color-accent-2),
+    tab-divider-color: var(--background-modifier-border),
+    tab-curve: 0px,
+    tab-radius-active: var(--radius-s),
+    tab-font-size: 0.85em,
+    tab-width: 220px,
+    tab-outline-width: var(--border-width)
+  );
+  $tab-stacked: (
+    tab-stacked-pane-width: 900px,
+    tab-stacked-header-width: 30px,
+    tab-stacked-text-align: right,
+    tab-stacked-text-transform: rotate(180deg),
+    tab-stacked-spine-order: row
+  );
+  $file: (
+    file-line-width: 950px,
+    file-line-max-width: 90%
+  );
+
+// @ EDITOR
+  $blockquote: (
+    embed-block-shadow-hover: 0,
+    blockquote-background-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.05),
+    blockquote-border-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5),
+    blockquote-color: var(--text-muted)
+  );
+  $callouts: (
+    callout-padding: string.unquote('var(--size-4-2) var(--size-4-4)'),
+    callout-border-width: 0px,
+    callout-border-opacity: 0.25,
+    callout-radius: 5px,
+    callout-title-size: 1rem,
+    callout-title-weight: var(--font-weight),
+    callout-title-opacity: 0.1
+  );
+  $checkboxes: (
+    aura-opacity: 1
+  );
+  $code: (
+    #code-themed: false,
+    #syntax-code-style: normal,
+    code-white-space: pre,
+    code-radius: 5px,
+    code-background: #f3f3f3,
+    code-size: 0.9em,
+    code-border: transparent,
+    inline-code-color: #eb5757,
+    inline-code-size: var(--code-size),
+    inline-code-background: var(--code-background),
+    inline-code-padding: string.unquote('var(--size-2-1) var(--size-4-1)'),
+    inline-code-radius: 3px,
+    language-icon-size: 18px,
+    language-border-width: 3px,
+    header-inline-code: var(--inline-code-color)
+  );
+  $embed: (
+    embed-max-height: 750px,
+    embed-border-start: string.unquote('2px solid hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5)')
+  );
+  $inline-title: (
+    inline-title-color: var(--h1-color),
+    inline-title-font: var(--h1-font),
+    inline-title-line-height: var(--h1-line-height),
+    inline-title-size: 2.4em,
+    inline-title-style: var(--h1-style),
+    inline-title-variant: var(--h1-variant),
+    inline-title-weight: var(--font-bold),
+    inline-title-margin-bottom: 0,
+    inline-title-text-transform: none
+  );
+  $headers: (
+    h1-color: inherit,
+    h2-color: inherit,
+    h3-color: inherit,
+    h4-color: inherit,
+    h5-color: inherit,
+    h6-color: inherit,
+    h1-font: inherit,
+    h2-font: inherit,
+    h3-font: inherit,
+    h4-font: inherit,
+    h5-font: inherit,
+    h6-font: inherit,
+    h1-style: normal,
+    h2-style: normal,
+    h3-style: normal,
+    h4-style: normal,
+    h5-style: normal,
+    h6-style: normal,
+    h1-variant: normal,
+    h2-variant: normal,
+    h3-variant: normal,
+    h4-variant: normal,
+    h5-variant: normal,
+    h6-variant: normal,
+    h1-weight: 700,
+    h2-weight: 675,
+    h3-weight: 650,
+    h4-weight: 625,
+    h5-weight: 600,
+    h6-weight: 575,
+    h1-text-transform: unset,
+    h2-text-transform: unset,
+    h3-text-transform: unset,
+    h4-text-transform: unset,
+    h5-text-transform: unset,
+    h6-text-transform: unset,
+    heading-code-color: var(--color-folly),
+    h1-size: calc(1.9em * var(--heading-scaling)),
+    h2-size: calc(1.7em * var(--heading-scaling)),
+    h3-size: calc(1.5em * var(--heading-scaling)),
+    h4-size: calc(1.35em * var(--heading-scaling)),
+    h5-size: calc(1.2em * var(--heading-scaling)),
+    h6-size: calc(1.1em * var(--heading-scaling)),
+    heading-scaling: 1,
+    h1-accent-color: var(--color-red),
+    h2-accent-color: var(--color-orange),
+    h3-accent-color: var(--color-yellow),
+    h4-accent-color: var(--color-green),
+    h5-accent-color: var(--color-blue),
+    h6-accent-color: var(--color-purple)
+  );
+  $link: (
+    #link-shorten: false,
+    link-decoration-hover: string.unquote('none'),
+    link-decoration: string.unquote('none'),
+    link-external-decoration: underline,
+    link-unresolved-opacity: 0.8,
+    link-unresolved-filter: grayscale(25%),
+    link-favicons: disable,
+    links-favicons: (
+      #body: true,
+      link-favicons: string.unquote('enable !important'))
+  );
+  $list: (
+    list-style-indent-size: 2.25em,
+    list-indent: 1.5em,
+    list-style-indent-editing-size: 0.75em,
+    list-spacing: 0.1em,
+    list-bullet-size: 0.3em,
+    list-numbered-style: decimal,
+    list-bullet-transform: string.unquote('none'),
+    list-bullet-border: string.unquote('none'),
+    list-bullet-radius: 50%,
+    list-bullet-size-alt: calc(var(--list-bullet-size) / 2),
+    list-marker-color-collapsed: var(--text-faint)
+  );
+  $image: (
+    image-size: 80,
+    image-radius: 5px,
+    image-border-color-l: #e5e7eb,
+    image-border-color-d: #1f2937,
+    image-centered: disable,
+    theme-light: (
+      #body: true,
+      image-border-color: var(--image-border-color-l)),
+    theme-dark: (
+      #body: true,
+      image-border-color: var(--image-border-color-d))
+  );
+  $table: (
+    #tables-style: string.unquote('none'),
+    #tables-stripped-: true,
+    #table-source-min-width: min-content,
+    tables-position: start,
+    table-selection-border-radius: 5px,
+    table-header-background: #e0e0e0,
+    table-text-size: 0.9em,
+    table-cell-fontsize: var(--table-text-size),
+    table-head-fontsize: var(--table-text-size),
+    table-header-weight: 500,
+    table-header-align: center
+  );
+  $tag: (
+    tag-size: var(--font-smaller),
+    tag-color: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.925),
+    tag-color-hover: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.95),
+    tag-background: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.075),
+    tag-background-hover: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.05),
+    tag-border-width: 0,
+    tag-border-color: hsla(var(--interactive-accent-hsl), 0.15),
+    tag-border-color-hover: hsla(var(--interactive-accent-hsl), 0.15),
+    tag-padding-x: 0.6em,
+    tag-padding-y: 0.3em,
+    tag-radius: 1em,
+    tag-font-color-l: #1d694b,
+    tag-font-color-d: #ffffff,
+    tag-background-color-l: #bde1d3,
+    tag-background-color-l-rgb: string.unquote('29, 105, 75'),
+    tag-background-color-d: #1d694b,
+    tag-background-color-d-rgb: string.unquote('189, 225, 211'),
+    tag-shadow: string.unquote('inset 0px -0.1em 0px 0px rgba(var(--mono-rgb-0), 10%)'),
+    tag-shadow-hover: string.unquote('inset 0px -0.1em 0px 0px rgba(var(--mono-rgb-0), 10%), 0px 0px 0px 3px rgba(var(--mono-rgb-0), 3%)'),
+    tag-shadow-active: string.unquote('inset 0px -0.1em 0px 0px rgba(var(--mono-rgb-0), 10%)'),
+    color-tag-background: string.unquote('rgba(var(--mono-rgb-100), 75%) !important'),
+    primary-rgb: string.unquote('135, 107, 224'),
+    theme-light: (
+      #body: true,
+      tag-background: var(--tag-background-color-l),
+      tag-background-rgb: var(--tag-background-color-l-rgb),
+      tag-color: var(--tag-font-color-l)
+    ),
+    theme-dark: (
+      #body: true,
+      tag-background: var(--tag-background-color-d),
+      tag-background-rgb: var(--tag-background-color-d-rgb),
+      tag-color: var(--tag-font-color-d)
+    )
+  );
+  $pill: (
+    pill-tag-color-1: var(--color-yellow-40),
+    pill-tag-bg-1: var(--color-alpha-yellow),
+    pill-tag-color-2: var(--color-red-40),
+    pill-tag-bg-2: var(--color-alpha-red),
+    pill-tag-color-3: var(--color-blue-40),
+    pill-tag-bg-3: var(--color-alpha-blue),
+    pill-tag-shadow-hover: string.unquote('inset 0px 0px 0px 1px rgba(var(--mono-rgb-0), 5%)'),
+    color-pill-background: string.unquote('var(--tag-background) !important')
+  );
+  $metadata: (
+    metadata-background: transparent,
+    metadata-border-radius: var(--radius-m),
+    metadata-column-num: 2,
+    metadata-display-editing: block,
+    metadata-display-reading: string.unquote('none'),
+    metadata-font-size: var(--font-ui-medium),
+    metadata-hide-heading: inline-block,
+    metadata-hide-yaml: inline,
+    metadata-icon-color: var(--text-muted),
+    metadata-property-radius: var(--radius-s),
+    properties-columns: 2,
+    //metadata-add-button: inline-flex,
+    //metadata-divider-color: string.unquote('none'),
+    //metadata-icon-size: calc(var(--image-size) - 2px),
+    //metadata-label-width: string.unquote('20% !important'),
+
+    metadata-label-width-multiplier: 9,
+    metadata-label-width: calc(var(--font-adaptive-small) * var(--metadata-label-width-multiplier)),
+    metadata-label-font-size: var(--font-adaptive-small),
+    metadata-input-font-size: var(--font-adaptive-small),
+    is-phone: (
+      #body: true,
+      metadata-label-font-size: var(--font-adaptive-smaller),
+      metadata-input-font-size: var(--font-adaptive-smaller)
+    )
+  );
+  $frontmatter: (
+    frontmatter-font-size: var(--font-ui-medium)
+  );
+  $editor-full-width-image: (
+    callout-fwi-height: 70px,
+    callout-fwi-title-shadow: string.unquote('0px 0px 0.1em rgb(var(--mono-rgb-0)), 0px 0px 0.2em rgb(var(--mono-rgb-0)), 0px 0px 0.5em rgb(var(--mono-rgb-0))'),
+    callout-fwi-title-blur: 5px,
+    // new variables
+    fwi-height: var(--callout-fwi-height),
+    fwi-title-shadow: var(--callout-fwi-title-shadow),
+    fwi-title-blur: var(--callout-fwi-title-blur)
+  );
+
+// @ FOUNDATIONS
+  $colors-named: (
+    'things': map.get(col.$colors-named, 'things'),
+    'rosewater': map.get(col.$colors-named, 'rosewater'),
+    'flamingo': map.get(col.$colors-named, 'flamingo'),
+    'bittersweet': map.get(col.$colors-named, 'bittersweet'),
+    'palevioletred': map.get(col.$colors-named, 'palevioletred'),
+    'folly': map.get(col.$colors-named, 'folly'),
+    'dark-folly': map.get(col.$colors-named, 'dark-folly'),
+    'maroon': map.get(col.$colors-named, 'maroon'),
+    'chocolate': map.get(col.$colors-named, 'chocolate'),
+    'dark-brown': map.get(col.$colors-named, 'dark-brown'),
+    'gold': map.get(col.$colors-named, 'gold'),
+    'light-gold': map.get(col.$colors-named, 'light-gold'),
+    'dark-gold': map.get(col.$colors-named, 'dark-gold'),
+    'lavender': map.get(col.$colors-named, 'lavender'),
+    'sky': map.get(col.$colors-named, 'sky'),
+    'skyblue': map.get(col.$colors-named, 'skyblue'),
+    'sapphire': map.get(col.$colors-named, 'sapphire'),
+    'ylmn-blue': map.get(col.$colors-named, 'ylmn-blue'),
+    'indigo': map.get(col.$colors-named, 'indigo'),
+    'light-indigo': map.get(col.$colors-named, 'light-indigo'),
+    'mauve': map.get(col.$colors-named, 'mauve'),
+    'dark-green': map.get(col.$colors-named, 'dark-green'),
+    'mint': map.get(col.$colors-named, 'mint'),
+    'light-mint': map.get(col.$colors-named, 'light-mint'),
+    'dark-mint': map.get(col.$colors-named, 'dark-mint'),
+    'light-gray': map.get(col.$colors-named, 'light-gray'),
+    'dark-gray': map.get(col.$colors-named, 'dark-gray'),
+    'dimgray': map.get(col.$colors-named, 'dimgray'),
+    'raisin-black': map.get(col.$colors-named, 'raisin-black'),
+    'rich-black': map.get(col.$colors-named, 'rich-black')
+  );
+  $icon: (
+    icon-color: var(--text-normal),
+    icon-color-focused: var(--text-accent),
+    icon-color-active: var(--text-accent),
+    icon-color-hover: var(--text-accent),
+    icon-font-size: var(--font-text-size),
+    icon-container-radius: 0,
+    clickable-icon-radius: calc(var(--radius-s) + 1px),
+    file-icon-color: var(--color-base-70, var(--text-normal)),
+    icon-muted: 0.5
+  );
+  $icon-size: (
+    icon-xxs: 11px,
+    icon-xs: 13px,
+    icon-sm: 15px,
+    icon-lm: 24px
+  );
+  $size: (
+    size-0: 0px,
+    size-1-1: 1px,
+    // size-1: 2px,
+    // size-2: 4px,
+    // size-3: 8px,
+    // size-4: 12px,
+    // size-5: 16px,
+    // size-6: 24px,
+    // size-7: 32px,
+    // size-8: 40px,
+    // size-9: 48px,
+    // size-10: 64px,
+    // size-11: 80px,
+    // size-12: 96px,
+    // size-13: 160px
+  );
+  $radius: (
+    radius-xs: 2px,
+    radius-s: 4px,
+    radius-sm: 5px,
+    radius-ms: 6px,
+    radius-m: 8px,
+    radius-ml: 10px,
+    radius-l: 12px,
+    radius-xl: 16px
+  );
+  $spacing: (
+    leading-0: 1em,
+    leading-1: 1.125em,
+    leading-2: 1.25em,
+    leading-3: 1.375em,
+    leading-4: 1.5em,
+    leading-5: 1.625em,
+    leading-6: 1.75em,
+    leading-7: 1.875em,
+    leading-8: 2.25em,
+    leading-9: 2.5em,
+    leading-10: 2.75em,
+    tracking-0: 0px,
+    tracking-1: 0.16px,
+    tracking-2: 0.32px,
+    tracking-3: 0.64px,
+    tracking-4: 0.96px
+  );
+  $font-size: (
+    font-ui-smallest: 0.7em,
+    font-smallest: 0.8em,
+    font-smaller: 0.875em,
+    font-small: 0.933em,
+    font-ui-tiny: 10px,
+    font-ui-smaller: 12px,
+    font-ui-small: 13px,
+    font-ui-medium: 15px,
+    font-ui-large: 20px
+  );
+  $font-weight: (
+    bold-modifier: 200,
+    bold-weight: string.unquote('calc(var(--font-weight) + var(--bold-modifier))'),
+    font-weight: var(--font-normal),
+    normal-weight: 400
+  );
+  $font-scale: (
+    font-scale-000: 0.75em,
+    font-scale-00: 0.875em,
+    font-scale-0: 1em,
+    font-scale-1: 1.125em,
+    font-scale-2: 1.25em,
+    font-scale-3: 1.5em,
+    font-scale-4: 1.75em,
+    font-scale-5: 2em,
+    font-scale-6: 2.25em,
+    font-scale-7: 2.625em,
+    font-scale-8: 3em,
+    font-scale-9: 3.375em,
+    font-scale-10: 3.75em
+  );
+  $font: (
+    font-print-default: string.unquote('var(--font-print-override), var(--font-text-override), var(--font-text-theme), Arial'),
+    font-mermaid: string.unquote('var(--font-default), var(--font-text)'),
+    font-text-size: 16px,
+    font-ui-smaller: 12px,
+    font-ui-small: 13px,
+    font-ui-medium: 15px,
+    font-ui-large: 20px
+  );
+
+    // :root* {
+    //   --font-default: fira-sans;
+    //   --default-font: fira-sans;
+    //   --font-family-editor: fira-sans;
+    //   --font-monospace-default: fira-sans;
+    //   --font-interface-override: fira-sans;
+    //   --font-text-override: fira-sans;
+    //   --font-monospace-override: fira-sans;
+    // }
+
+  $adaptive-font-size: (
+    font-adaptive-normal: var(--font-text-size, var(--editor-font-size)),
+    font-adaptive-small: calc(var(--font-ui-small) * 1.07),
+    font-adaptive-smaller: var(--font-ui-small),
+    font-adaptive-smallest: var(--font-ui-smaller),
+    font-code: calc(var(--font-adaptive-normal) * 0.9),
+    table-text-size: calc(var(--font-adaptive-normal) * 0.9)
+  );
+  $line-width: (
+    line-width: 55rem,
+    line-height: 1.5,
+    line-height-normal: var(--line-height),
+    line-width-adaptive: var(--line-width),
+    line-width-wide: calc(var(--line-width) + 12.5%),
+    max-width: 90%,
+    max-col-width: 18em
+  );
+
+// @ PLUGINS
+  $canvas: (
+    font-size-node-large: 5em,
+    canvas-background: var(--background-primary),
+    canvas-card-label-color: var(--text-faint),
+    canvas-color-1: var(--color-red-rgb),
+    canvas-color-2: var(--color-orange-rgb),
+    canvas-color-3: var(--color-yellow-rgb),
+    canvas-color-4: var(--color-green-rgb),
+    canvas-color-5: var(--color-cyan-rgb),
+    canvas-color-6: var(--color-purple-rgb),
+    canvas-dot-pattern: var(--background-modifier-border-hover)
+  );
+  $file-explorer: (
+    folder-color-rgb: string.unquote('245, 180, 0'),
+    folder-color: rgb(var(--setting-color-dirs, var(--folder-color-rgb))),
+    folder-hover-color: rgba(var(--setting-color-dirs, var(--folder-color-rgb)), 0.24)
+  );
+  $dataview: (
+    dataview-table-tbody-size: calc(var(--font-text-size) * 0.82),
+    dataview-table-thead-size: calc(var(--font-text-size) * 0.88)
+  );
+  $notetoolbar: (
+    cg-nt-fab-inactive-opacity: string.unquote('1 !important'),
+    btn-shadow-29: string.unquote('rgba(var(--mono-rgb-100),0.19) 0 10 20,rgba(var(--mono-rgb-100),0.23) 0 6px 6px'),
+    btn-shadow-89: string.unquote('rgba(var(--mono-rgb-100),0.4) 0 2px 4px,rgba(var(--mono-rgb-100),0.3) 0 4px 9px -3px,rgba(var(--mono-rgb-100),0.2) 0 -3px 0 inset'),
+    ntb-fabl-shadow: string.unquote('rgba(var(--mono-rgb-100),0.4) 0 2px 4px,rgba(var(--mono-rgb-100),0.3) 0 7px 13px -3px,rgba(var(--mono-rgb-100),0.2) 0 -3px 0 inset'),
+    ntb-element-shadow: string.unquote('rgba(var(--mono-rgb-100), 0.4) 0 1px 2px, rgba(var(--mono-rgb-100), 0.3) 0 2px 6px -1px, rgba(var(--mono-rgb-100), 0.2) 0 -1px 0 inset')
+  );
+  $kanban: (
+    kanban-dot-spacing: 20px
+  );
+  $tab-panels: (
+    '#tab-panel-view': tab-panel-minimal,
+    tab-panel-border-radius: 1.5em,
+    tab-panel-tab-min-width: 80px,
+    tab-panel-tab-selected-background: #ffffff
+  );
+  $mermaid: (
+    mermaid-font-edgelabel: italic,
+    mermaid-font-file-nodeLabel: 600,
+    mermaid-background-file-first-child: #50a150
+  );
+  $meta-bind: (
+    #metabind-compact: true,
+    mb-border-width: def.$border-width,
+    mb-border-radius: def.$input-radius,
+    mb-slider-spacing: 5px,
+    mb-select-element-border-width: 5px,
+    mb-date-input-year-input-width: 80px,
+    mb-background-modifier-active: hsla(var(--interactive-accent-hsl), 0.15),
+    mb-background-modifier-active-hover: hsla(var(--interactive-accent-hsl), 0.3),
+    mb-input-type-select-text: var(--text-muted),
+    mb-input-type-select-text-hover: var(--text-normal),
+    mb-input-type-select-text-active: var(--text-normal),
+    mb-input-type-select-text-active-hover: var(--text-normal),
+    theme-light: (
+      #body: true,
+      metabind-text-color: #151515,
+      metabind-text-color-inverted: #fdfdfd
+    ),
+    theme-dark: (
+      #body: true,
+      metabind-text-color: #ededed,
+      metabind-text-color-inverted: #171717
+    )
+  );
+
+// @ WINDOW
+  $cursor: (
+    cursor-help: help,
+    cursor-zoom: zoom-in
+  );
+  $animation: (
+    animation-speed: var(--anim-duration-superfast),
+    animation: string.unquote('var(--animation-speed) var(--anim-motion-smooth)'),
+    anim-in: string.unquote('var(--anim-duration-fast) var(--anim-duration-superfast) var(--anim-motion-swing)'),
+    anim-out: string.unquote('var(--anim-duration-fast) var(--anim-duration-superfast) var(--anim-motion-swing)')
+  );
+  $workspace: (
+    file-line-width: 950px,
+    file-line-max-width: 88%,
+    line-height: 1.5,
+    max-col-width: 18em,
+    file-margins-block: 32px,
+    file-margins-inline: 32px,
+    file-margins: string.unquote('var(--file-margins-block) var(--file-margins-inline)'),
+    workspace-foreground: var(--text-normal),
+    workspace-foreground-muted: var(--text-muted),
+    workspace-foreground-faint: var(--text-faint),
+    workspace-background: var(--background-secondary)
+  );
+  $menu: (
+    menu-input-width-100: 100%,
+    menu-input-width-tiny: 20px,
+    menu-input-width-small: 120px,
+    menu-controls-width: 155px,
+    menu-max-control-width: 185px,
+    pickr-border-radius: var(--radius-s)
+  );
+  $modal: (
+    modal-width: min(90vw, var(--modal-max-width)),
+    modal-height: min(85vh, var(--modal-max-height)),
+    modal-border-color: rgba(var(--mono-rgb-0), 0.1),
+    modal-background: var(--background-secondary),
+    frame-background-color: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + 32%)),
+    setting-color-logo: var(--text-on-accent),
+  );
+  $mod-settings: (
+    #mod-settings-description-installed: true,
+    mod-settings-installed: string.unquote('none'),
+    mod-settings-description-installed: (
+      #body: true,
+      mod-settings-installed: hide
+    )
+  );
+  $divider: (
+    divider-color: var(--background-modifier-border),
+    divider-color-hover: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5),
+    workspace-divider-color: var(--divider-color)
+  );
+  $outline: (
+    outline-guideline-width: var(--size-2-1),
+    outline-guideline-color: var(--accent-inactive),
+    outline-guideline-color-alt: var(--accent-active),
+    outline-item-height: calc(var(--nav-item-size) * 1.8),
+    outline-indent-width: -14px
+  );
+
+// @ MODULES
+  $stylesettings: (
+    stylesettings-controls-width: 150px,
+    stylesettings-controls-units-width: 27px,
+    stylesettings-indent-width: 4px,
+    pickr-size: 1em,
+    dimmed: 0.55,
+    upsize: 103%,
+    expand: 110%,
+    less-letter-spacing: -3px,
+    comm-item-opacity: 0.89,
+  );
+  $stylesettings-module: (
+    stylesettings: enable,
+    stylesettings-icons: enable,
+    stylesettings-header-colour: var(--text-normal),
+    stylesettings-description: enable,
+    stylesettings-values: enable,
+    stylesettings-units: all,
+    stylesettings-colors: (
+      #body: true,
+      stylesettings-colors: enable,
+      stylesettings-colors-icons: enable,
+      stylesettings-colors-header: disable,
+      stylesettings-colors-hiearchical: enable
+    ),
+    stylesettings-colors-header: (
+      #body: true,
+      stylesettings-header-colour: string.unquote('var(--main-color, var(--text-accent), var(--text-normal)) !important')
+    ),
+    stylesettings-hiearchical: (
+      #body: true,
+      stylesettings-hiearchical: enable
+    )
+  );
+  $cards: (
+    cards-min-width: 180px,
+    cards-max-width: 1fr,
+    cards-mobile-width: 120px,
+    cards-image-height: 400px,
+    cards-padding: 1.2em,
+    cards-border-width: 1px,
+    cards-background: transparent,
+    //cards-background-hover: transparent,
+    cards-aspect-ratio: auto,
+    cards-image-fit: contain,
+    cards-columns: repeat(auto-fit, minmax(var(--cards-min-width), var(--cards-max-width))),
+    #cards-background-light: #777777,
+    #cards-background-dark: #e3e3e3,
+    #cards-background-hover-light: #e3e3e3,
+    #cards-background-hover-dark: #777777
+  );
+  $icons-di: (
+    di-icon-color: var(--fa-primary-color),
+    fa-primary-color: #3580BA,
+    fa-secondary-color: #C8C8C8,
+    di-animation-iteration-count: 1,
+    di-border-color: #ababab,
+    di-border-radius: 8px,
+    di-border-style: solid,
+    di-border-width: 2px,
+    theme-light: (
+      #body: true,
+      di-icon-color: var(--fa-primary-color) ),
+    theme-dark: (
+      #body: true,
+      di-icon-color: var(--fa-secondary-color) )
+  );
+  $rainbow-folders: (
+    fas-rainbow-folders: disable
+  );

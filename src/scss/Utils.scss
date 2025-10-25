@@ -105,6 +105,27 @@ $charsEncoding: (
 
   @return $string;
 }
+/// First letter upper case in '$string'
+/// @param {String} $string - Initial string
+/// @return {String} - Updated string
+@function str-caseWord($string) {
+  @return str-change-case(string.slice($string, 1, 1),'upper') + str-change-case(string.slice($string, 2), 'lower');
+}
+
+/// Change string to selected case
+/// @param {String} $string - Initial string
+/// @param {String} $case - slected case 'upper' or 'lower'
+/// @return {String} - Updated string
+@function str-change-case($string, $case) {
+  @if $case=='upper' {
+    @return string.to-upper-case($string);
+  } @else if $case=='lower' {
+    @return string.to-lower-case($string);
+  } @else {
+    @warn "Invalid case option: #{$case}. Please use 'upper' or 'lower'.";
+    @return $string;
+  }
+}
 
 /// Map check if key exists and return value
 /// @param {Map} $map - Map
@@ -123,6 +144,22 @@ $charsEncoding: (
   }
 
   @return $default;
+}
+/// Map deep get
+/// @author Kitty Giraudel
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    @if map.has-key($map, $key) {
+      $map: map.get($map, $key);
+    }
+    @else {
+      @return null;
+    }
+  }
+  @return $map;
 }
 
 /// Create url with svg icon

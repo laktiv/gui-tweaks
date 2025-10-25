@@ -1,0 +1,339 @@
+$colors-main: (
+  red:    #FF306C,
+  orange: #FF9502,
+  yellow: #FFD500,
+  brown:  #A16A49,
+  green:  #4BBF5E,
+  cyan:   #53DFDD,
+  blue:   #2E80F2,
+  purple: #B051DE,
+  pink:   #FF82B2,
+  gray:   #B6AFA6,
+  white:  #FCFCFC,
+  teal:   #179299,
+  black:  #121212
+);
+$colors-named: (
+	'things':        #5893e7,
+	'rosewater':     #f6ad9d,
+	'flamingo':      #dd7878,
+	'bittersweet':   #f05d5e,
+	'palevioletred': #a32959,
+	'folly':         #ff3366,
+	'dark-folly':    #c7204a,
+  'maroon':        #e64553,
+	'chocolate':     #c24f0a,
+	'dark-brown':    #5d0023,
+  'gold':          #fde909,
+  'light-gold':    #e8e08b,
+	'dark-gold':     #f6c177,
+  'lavender':      #7287fd,
+	'sky':           #04a5e5,
+	'skyblue':       #51adcf,
+	'sapphire':      #209fb5,
+	'ylmn-blue':     #375ba9,
+  'indigo':        #685fce,
+	'light-indigo':  #a69efa,
+  'mauve':         #8839ef,
+	'dark-green':    #41a12b,
+	'mint':          #aaf0d1,
+	'light-mint':    #9af6e5,
+	'dark-mint':     #13c4a3,
+	'light-gray':    #cccccc,
+	'dark-gray':     #b3b3b3,
+	'dimgray':       #666666,
+	'raisin-black':  #1b1825,
+	'rich-black':    #121019
+);
+$colors-tags: (
+ // 'todoist
+	todoist-1: #ff757f,
+	todoist-2: #ffc777,
+	todoist-3: #65bcff,
+	todoist-4: #b4c2f0,
+	todoist-1-bg: #ff757f40,
+	todoist-2-bg: #ffc77740,
+	todoist-3-bg: #65bcff40,
+	todoist-4-bg: #b4c2f040,
+ // priority
+	priority-1: #ff98a4,
+	priority-2: #ffc777,
+	priority-3: #65bcff,
+	priority-4: #b4c2f0,
+ // tags
+	tag-1: #ffd6aa,
+	tag-2: #caffc4,
+	tag-3: #ffadae,
+	tag-4: #9bf6fe,
+	tag-5: #ffc6fd,
+	tag-6: #a0c5fc,
+	tag-7: #bdb3fb,
+	tag-8: #fdffbc,
+	tag-9: #e4e4e4,
+	tag-10: #ffe46f
+);
+$colors-progress: (
+	progress-color-1: #ad5758,
+	progress-color-2: #b87f4c,
+	progress-color-3: #d2b874,
+	progress-color-4: #b0c07e,
+	progress-color-5: #768399,
+);
+$colors-theme-secondary: (
+  light: (
+    'off':         #d04255,
+    'foam':        #56949f,
+    'iris':        #907aa9,
+    'love':        #b4637a,
+    'pine':        #286983,
+    'rose':        #d7827e,
+    'white-smoke': #f5f5f5,
+    'crimson':     #fa5055
+  ),
+  dark: (
+    'off':         #f05d5e,
+    'foam':        #9ccfd8,
+    'iris':        #c4a7e7,
+    'love':        #eb6f92,
+    'pine':        #31748f,
+    'rose':        #ebbcba,
+    'white-smoke': #f1f1f1,
+    'crimson':     #fa4251
+  )
+);
+$colors-code: (
+  light: (
+    comment: #808080,   // #999999
+    tag: #D70040,       // #e4374b
+    value: #005BBB,     // #876be0
+    string: #008000,    // #0cb54f
+    property: #BF5AF2,  // #2db7b5
+    function: #007AFF,  // #bd8e37
+    keyword: #FF453A,   // #c32b74
+    important: #FF9F0A, // #d96c00
+    operator: #383A42,  // #e4374b
+    text: #1D1D1F,      // #888888
+    def: #986801,
+    background: #f3f3f3, // : rgba(var(--mono-rgb-100), 0.05)
+    punctuation: #6f6f6f  // #888888 // : var(--text-muted)
+  ),
+  dark: (
+    comment: #A0A0A0,
+    tag: #FF6188,
+    value: #0A84FF,
+    string: #50FA7B,
+    property: #FFD60A,
+    function: #5AC8FA,
+    keyword: #FF9F0A,
+    important: #FF453A,
+    operator: #C678DD,
+    text: #FAFAFA,
+    def: #D19A66,
+    background: #dddddd,
+    punctuation: #aaaaaa)
+);
+$colors-mono: (
+  light: (
+    rgb-0: '255, 255, 255',
+    rgb-100: '0, 0, 0'),
+  dark: (
+    rgb-0: '0, 0, 0',
+    rgb-100: '255, 255, 255')
+);
+$colors-base: (
+  light: (
+    base-00:  #ffffff, // main editor window
+    base-05:  #fcfcfc, // code blocks
+    base-10:  #f6f7f8,
+    base-20:  #f6f7f8, // top unselected unfocused nav
+    base-25:  #f0f0f0,
+    base-30:  #ebedf0,
+    base-35:  #d4d4d4,
+    base-40:  #bdbdbd, // soften dividing lines
+    base-50:  #ababab, // unfocused text
+    base-60:  #707070,
+    base-70:  #6f6f6f,
+    base-80:  #5a5a5a,
+    base-90:  #3c3c3c,
+    base-100: #222222 ),
+  dark: (
+    base-00:  #1c2127, // main editor window
+    base-05:  #1a1c22, // code blocks
+    base-10:  #282c34,
+    base-20:  #181c20, // top unselected unfocused nav
+    base-25:  #2c313c,
+    base-30:  #35393e,
+    base-35:  #3f3f3f,
+    base-40:  #555555, // soften dividing lines
+    base-50:  #666666, // unfocused text
+    base-60:  #999999,
+    base-70:  #aaaaaa,
+    base-80:  #bababa,
+    base-90:  #cacaca,
+    base-100: #dadada )
+);
+$colors-grade: (
+  light: (
+    gray-10: hsla(36deg, 38%, 98%, 100%),
+    gray-20: hsla(35deg, 36%, 96%, 100%),
+    gray-30: hsla(35deg, 37%, 92%, 100%),
+    gray-40: hsla(34deg, 34%, 90%, 100%),
+    gray-50: hsla(36deg, 35%, 88%, 100%),
+    gray-60: hsla(37deg, 38%, 83%, 100%),
+    gray-70: hsla(34deg, 37%, 70%, 100%),
+    gray-80: hsla(34deg, 29%, 60%, 100%),
+    gray-90: hsla(31deg, 23%, 50%, 100%),
+    gray-100: hsla(35deg, 28%, 40%, 100%),
+    gray-110: hsla(34deg, 30%, 37%, 100%),
+    gray-120: hsla(36deg, 32%, 30%, 100%),
+    gray-130: hsla(31deg, 45%, 24%, 100%),
+    gray-140: hsla(33deg, 54%, 17%, 100%),
+    alpha-gray: hsla(34deg, 37%, 70%, 15%),
+    red-10: hsla(4deg, 59%, 64%, 100%),
+    red-20: hsla(4deg, 72%, 55%, 100%),
+    red-30: hsla(4deg, 56%, 48%, 100%),
+    red-40: hsla(4deg, 72%, 35%, 100%),
+    alpha-red: hsla(350deg, 84%, 63%, 20%),
+    orange-10: hsla(26deg, 70%, 63%, 100%),
+    orange-20: hsla(21deg, 81%, 59%, 100%),
+    orange-30: hsla(18deg, 69%, 50%, 100%),
+    orange-40: hsla(18deg, 96%, 35%, 100%),
+    alpha-orange: hsla(27deg, 100%, 50%, 20%),
+    yellow-10: hsla(43deg, 71%, 67%, 100%),
+    yellow-20: hsla(43deg, 83%, 57%, 100%),
+    yellow-30: hsla(40deg, 79%, 47%, 100%),
+    yellow-40: hsla(40deg, 98%, 36%, 100%),
+    alpha-yellow: hsla(44deg, 100%, 50%, 20%),
+    green-10: hsla(148deg, 30%, 65%, 100%),
+    green-20: hsla(148deg, 48%, 47%, 100%),
+    green-30: hsla(149deg, 50%, 39%, 100%),
+    green-40: hsla(153deg, 65%, 29%, 100%),
+    alpha-green: hsla(74deg, 69%, 44%, 20%),
+    blue-10: hsla(197deg, 39%, 56%, 100%),
+    blue-20: hsla(202deg, 66%, 48%, 100%),
+    blue-30: hsla(200deg, 64%, 37%, 100%),
+    blue-40: hsla(205deg, 85%, 25%, 100%),
+    alpha-blue: hsla(186deg, 64%, 46%, 20%),
+    purple-10: hsla(280deg, 43%, 76%, 100%),
+    purple-20: hsla(277deg, 35%, 59%, 100%),
+    purple-30: hsla(275deg, 37%, 43%, 100%),
+    purple-40: hsla(265deg, 70%, 30%, 100%),
+    alpha-purple: hsla(236deg, 100%, 72%, 20%)),
+  dark: (
+    gray-10: hsla(32deg, 48%, 85%, 100%),
+    gray-20: hsla(34deg, 39%, 74%, 100%),
+    gray-30: hsla(34deg, 31%, 68%, 100%),
+    gray-40: hsla(35deg, 27%, 55%, 100%),
+    gray-50: hsla(34deg, 24%, 40%, 100%),
+    gray-60: hsla(33deg, 27%, 30%, 100%),
+    gray-70: hsla(31deg, 27%, 24%, 100%),
+    gray-80: hsla(28deg, 22%, 18%, 100%),
+    gray-90: hsla(33deg, 20%, 16%, 100%),
+    gray-100: hsla(30deg, 19%, 14%, 100%),
+    gray-110: hsla(30deg, 17%, 13%, 100%),
+    gray-120: hsla(29deg, 16%, 12%, 100%),
+    gray-130: hsla(24deg, 18%, 10%, 100%),
+    gray-140: hsla(32deg, 21%, 8%, 100%),
+    alpha-gray: hsla(34deg, 24%, 40%, 20%),
+    red-10: hsla(5deg, 94%, 73%, 100%),
+    red-20: hsla(4deg, 91%, 67%, 100%),
+    red-30: hsla(4deg, 88%, 61%, 100%),
+    red-40: hsla(2deg, 75%, 52%, 100%),
+    alpha-red: hsla(350deg, 84%, 63%, 20%),
+    orange-10: hsla(26deg, 85%, 58%, 100%),
+    orange-20: hsla(24deg, 84%, 50%, 100%),
+    orange-30: hsla(22deg, 82%, 47%, 100%),
+    orange-40: hsla(19deg, 81%, 41%, 100%),
+    alpha-orange: hsla(27deg, 100%, 50%, 20%),
+    yellow-10: hsla(43deg, 69%, 63%, 100%),
+    yellow-20: hsla(42deg, 79%, 51%, 100%),
+    yellow-30: hsla(40deg, 78%, 48%, 100%),
+    yellow-40: hsla(38deg, 76%, 42%, 100%),
+    alpha-yellow: hsla(44deg, 100%, 50%, 20%),
+    green-10: hsla(152deg, 51%, 54%, 100%),
+    green-20: hsla(154deg, 57%, 42%, 100%),
+    green-30: hsla(155deg, 78%, 29%, 100%),
+    green-40: hsla(154deg, 75%, 26%, 100%),
+    alpha-green: hsla(74deg, 69%, 44%, 20%),
+    blue-10: hsla(191deg, 54%, 62%, 100%),
+    blue-20: hsla(194deg, 59%, 56%, 100%),
+    blue-30: hsla(197deg, 48%, 49%, 100%),
+    blue-40: hsla(201deg, 45%, 40%, 100%),
+    alpha-blue: hsla(186deg, 64%, 46%, 20%),
+    purple-10: hsla(242deg, 52%, 69%, 100%),
+    purple-20: hsla(241deg, 45%, 57%, 100%),
+    purple-30: hsla(239deg, 45%, 51%, 100%),
+    purple-40: hsla(238deg, 47%, 48%, 100%),
+    alpha-purple: hsla(236deg, 100%, 72%, 20%))
+);
+$colors-highlight: (
+  light: (
+    highlight-low: #fafafa,
+    highlight-med: #e0e0e0,
+    highlight-high:#d4d4d4,
+    hr-divider:    #bcc0cd ),
+  dark: (
+    highlight-low: #2a2a2a,
+    highlight-med: #3f3f3f,
+    highlight-high:#555555,
+    hr-divider:    #323d43 )
+);
+$rainbow-colors: (
+  light: (
+    rainbow-1: hsl(18, 60%, 40%),
+    rainbow-2: hsl(54, 60%, 40%),
+    rainbow-3: hsl(90, 60%, 40%),
+    rainbow-4: hsl(126, 60%, 40%),
+    rainbow-5: hsl(162, 60%, 40%),
+    rainbow-6: hsl(198, 60%, 40%),
+    rainbow-7: hsl(234, 60%, 40%),
+    rainbow-8: hsl(270, 60%, 40%),
+    rainbow-9: hsl(306, 60%, 40%),
+    rainbow-10: hsl(342, 60%, 40%)),
+  dark: (
+    rainbow-1: hsl(0, 100%, 84%),
+    rainbow-2: hsl(33, 100%, 82%),
+    rainbow-3: hsl(62, 100%, 86%),
+    rainbow-4: hsl(110, 100%, 87%),
+    rainbow-5: hsl(193, 100%, 79%),
+    rainbow-6: hsl(217, 100%, 81%),
+    rainbow-7: hsl(249, 100%, 85%),
+    rainbow-8: hsl(270, 100%, 87%),
+    rainbow-9: hsl(300, 100%, 89%),
+    rainbow-10: hsl(324, 100%, 83%))
+);
+
+$colors-atom: (
+  atom-gray-1:	( light: #383a42, dark: #5c6370  ),
+  atom-gray-2:	( light: #383a42, dark: #abb2bf  ),
+  atom-red:	    ( light: #e75545, dark: #e06c75  ),
+  atom-green:	  ( light: #4ea24c, dark: #d19a66  ),
+  atom-blue:	  ( light: #3d74f6, dark: #98c379  ),
+  atom-purple:	( light: #a625a4, dark: #56b6c2  ),
+  atom-aqua:	  ( light: #0084bc, dark: #c678dd  ),
+  atom-yellow:	( light: #e35649, dark: #61afef  ),
+  atom-orange:	( light: #986800, dark: #e5c07b  ),
+);
+$colors-text: (
+  text-error:                       ( light: #CF6679, dark: #CF6679 ),
+  text-error-hover:                 ( light: #ff2f00, dark: #ff2f00 ),
+  background-modifier-error:        ( light: &,         dark: #9b4343 ),
+  background-modifier-error-rgb:    ( light: &,         dark: '155, 67, 67' ),
+
+  background-modifier-success:      ( light: &,         dark: #539126 ),
+  background-modifier-success-rgb:  ( light: &,         dark: '83, 145, 38' ),
+);
+
+$colors-text-default: (
+  text-accent:              ( light: #705dcf,   dark: #7f6df2 ),
+  text-accent-hover:        ( light: #7a6ae6,   dark: #8875ff ),
+  text-normal:              ( light: #2e3338,   dark: #dcddde ),
+  text-muted:               ( light: #888888,   dark: #999999 ),
+  text-faint:               ( light: #999999,   dark: #666666 ),
+  text-error:               ( light: #800000,   dark: #ff3333 ),
+  text-error-hover:         ( light: #990000,   dark: #990000 ),
+  text-highlight-bg:        ( light: #ffff0066, dark: #ffff0066 ),
+  text-highlight-bg-active: ( light: #ff800066, dark: #ff800066 ),
+  text-selection:           ( light: #cce6fffc, dark: #17304dfc ),
+  text-selection2:          ( light: #f2f2f2,   dark: #dcddde ),
+);

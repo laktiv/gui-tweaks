@@ -1,0 +1,12 @@
+/* #region {Statusbar} */
+.status-bar {
+  span {
+    white-space: nowrap; }
+  .status-bar-item {
+    &.cmdr.cmdr-adder          { order: -9; }
+    &.plugin-mysnippets-plugin { order: -3; }
+    &.plugin-editor-status     { order: -2; }
+    &.plugin-js-engine         { order: 99; }
+    &.plugin-datacore          { display: none; } }
+}
+/* #endregion {Statusbar} */

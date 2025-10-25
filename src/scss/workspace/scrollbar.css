@@ -1,0 +1,61 @@
+/* #region {Scrollbar} */
+body {
+  --scrollbar-active-thumb-bg: hsla(var(--accent-h), var(--accent-s), var(--accent-l), 0.5);
+}
+@property --scrollbar-color {
+  /* usage of `@property`: https://stackoverflow.com/a/74050413/20058211
+     usage of `-webkit-text-fill-color`: https://stackoverflow.com/a/46304690/20058211 */
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(0, 0, 0, 0);
+}
+body:not(.is-mobile) {
+  .mod-settings :is(.vertical-tab-content, .vertical-tab-header) {
+    scrollbar-gutter: stable; }
+
+  &.scrollbar-hover-accent {
+    --setting-scrollbar-hover: hsla(var(--color-accent-hsl), 40%); }
+
+  &.scrollbar-hover-expand ::-webkit-scrollbar-thumb {
+    &:hover, &:active {
+    border-width: var(--size-2-1) !important; } }
+
+  ::-webkit-scrollbar {
+    width: var(--size-4-3) !important;
+    height: var(--size-4-3) !important;
+    background-color: transparent !important; }
+  ::-webkit-scrollbar-track {
+    background-color: transparent !important;
+    box-shadow: none !important; }
+  ::-webkit-scrollbar-thumb {
+    border-radius: var(--size-2-3) !important;
+    border: 3.6px solid transparent !important;
+    background-color: var(--scrollbar-color) !important;
+    &:hover {
+      --scrollbar-color: var(--setting-scrollbar-hover); }
+    &:active {
+      --scrollbar-color: hsla(var(--color-accent-hsl), 64%); } }
+  &:not(.scrollbar-animation) {
+    --scrollbar-color: hsla(var(--color-accent-hsl), 24%); }
+  &.scrollbar-animation {
+    :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .workspace-leaf-content:not([data-type*=graph], [data-type*=pdf]) .view-content, .search-result-container, .git-view-body, .suggestion-container .suggestion, .prompt-results, .community-modal-search-results-wrapper, .community-modal-info, .modal:not(.mod-settings, .mod-community-theme, .mod-community-plugin), .tag-container, .backlink-pane, .markdown-source-view .cm-scroller, .markdown-preview-view, .workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container, .markdown-embed-content .markdown-rendered, pre code, .workspace-leaf-content[data-type=calendar] .view-content, .kanban-plugin__board, .kanban-plugin__lane-items, .kanban-plugin__autocomplete) {
+      transition: --scrollbar-color var(--animation); }
+    :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .workspace-leaf-content:not([data-type*=graph], [data-type*=pdf]) .view-content, .search-result-container, .git-view-body, .suggestion-container .suggestion, .prompt-results, .community-modal-search-results-wrapper, .community-modal-info, .modal:not(.mod-settings, .mod-community-theme, .mod-community-plugin), .tag-container, .backlink-pane, .markdown-source-view .cm-scroller, .markdown-preview-view, .workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container, .markdown-embed-content .markdown-rendered, pre code, .workspace-leaf-content[data-type=calendar] .view-content, .kanban-plugin__board, .kanban-plugin__lane-items, .kanban-plugin__autocomplete):hover {
+      --scrollbar-color: hsla(var(--color-accent-hsl), 24%); }
+
+    textarea {
+      color: transparent;
+      transition: color var(--animation);
+      -webkit-text-fill-color: var(--text-normal);
+
+      &:hover { color: hsla(var(--color-accent-hsl), 24%); }
+      & * { -webkit-text-fill-color: initial; }
+      &::-webkit-scrollbar-thumb {
+        box-shadow: 0 0 0 10px inset;
+        border-width: 3.2px;
+        background-clip: content-box;
+        background-color: transparent !important; }
+    }
+  }
+}
+/* #endregion {Scrollbar} */

@@ -1,7 +1,7 @@
-/* #region {footnote} */
+/* #region {Footnote} */
 sup[data-footnote-id] {
   font-size: var(--font-smallest);
 }
 .footnote-ref { vertical-align: baseline; }
 .footnotes hr { margin-bottom: 0; }
-/* #endregion {footnote} */
+/* #endregion {Footnote} */

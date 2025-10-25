@@ -1,0 +1,134 @@
+/* #region {Canvas} */
+body {
+  --font-size-node-large: 5em;
+  --canvas-background: var(--background-primary);
+  --canvas-card-label-color: var(--text-faint);
+  --canvas-color-1: var(--color-red-rgb);
+  --canvas-color-2: var(--color-orange-rgb);
+  --canvas-color-3: var(--color-yellow-rgb);
+  --canvas-color-4: var(--color-green-rgb);
+  --canvas-color-5: var(--color-cyan-rgb);
+  --canvas-color-6: var(--color-purple-rgb);
+  --canvas-dot-pattern: var(--background-modifier-border-hover);
+
+  &.theme-dark {
+    --canvas-color: var(--color-base-40);
+    --canvas-hover-color: var(--color-base-50);
+  }
+}
+
+.canvas-node-label {
+  font-size: var(--font-adaptive-small);
+}
+.canvas-edges {
+  :not(.is-themed) path.canvas-display-path {
+    stroke: var(--background-modifier-border-focus);
+  }
+  :not(.is-themed) polyline.canvas-path-end {
+    stroke: var(--background-modifier-border-focus);
+    fill: var(--background-modifier-border-focus);
+  }
+}
+.canvas-node-container {
+  border: 1.5px solid var(--background-modifier-border-focus);
+}
+.node-insert-event.mod-inside-iframe {
+  --max-width: 100%;
+  --folding-offset: 0px;
+  .cm-editor .cm-content {
+    padding-top: 0;
+  }
+}
+
+/* + Text in the middle of block */
+  .canvas-wrapper .node-insert-event .markdown-preview-section p {
+    text-align: var(--canvas-text-black-align);
+  }
+
+/* + #node-background */
+  .canvas-node:has(.tag[href="#node-background"], .node-background):not(.is-focused) {
+    z-index: -1 !important;
+  }
+
+  .canvas-node:not(.is-focused) :is(.tag[href="#node-background"], .node-background) {
+    display: none;
+  }
+
+/* + #node-image */
+  .canvas-node:has(.tag[href="#node-image"], .node-image):not(.is-editing) {
+    --p-spacing: 0;
+    --image-shadow-offset: 0;
+
+    container: node / size;
+
+    .canvas-node-container {
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .canvas-node-content {
+      background: none;
+    }
+
+    .markdown-preview-view {
+      padding: 0;
+      overflow: visible;
+    }
+
+    .markdown-preview-view::before,
+    .markdown-preview-view::after {
+      content: none;
+    }
+
+    br {
+      display: none;
+    }
+
+    img {
+      width: 100cqw;
+      height: 100cqh;
+      object-fit: cover;
+    }
+  }
+
+  .canvas-node:not(.is-editing) :is(.tag[href="#node-image"], .node-image) {
+    display: none;
+  }
+
+/* + #node-large */
+  .canvas-node:has(.tag[href="#node-large"], .node-large):not(.is-editing) {
+    .markdown-preview-view {
+      font-size: var(--font-size-node-large);
+    }
+  }
+
+  .canvas-node:not(.is-editing) :is(.tag[href="#node-large"], .node-large) {
+    display: none;
+  }
+
+/* + #node-only-text */
+  .canvas-node:has(.tag[href="#node-only-text"], .node-only-text):not(.is-editing) {
+    .canvas-node-container {
+      box-shadow: none;
+      background: none; }
+    &:not(:is(.is-dragging, :hover)) .canvas-node-container {
+      border: none; }
+    .canvas-node-content {
+      background: none; }
+  }
+
+  .canvas-node:not(.is-editing) :is(.tag[href="#node-only-text"], .node-only-text) {
+    display: none;
+  }
+
+/* + #node-text-color-invert */
+  .canvas-node:has(.tag[href="#node-text-color-invert"], .node-text-color-invert):not(.is-editing) {
+    .markdown-preview-view {
+      color: rgb(var(--mono-rgb-0)); }
+  }
+
+  .canvas-node:not(.is-editing) :is(.tag[href="#node-text-color-invert"], .node-text-color-invert) {
+    display: none;
+  }
+/* #endregion {Canvas} */

@@ -1,4 +1,4 @@
-/* #region {highlighter} */
+/* #region {Highlighter} */
  /* ~ Mark Colors */
 	body {
 		--highlighter-blue-rgb: 173, 205, 255;
@@ -51,4 +51,4 @@
 		&.red    { --text-highlight-rgb: var(--highlighter-red-rgb) !important; }
 		&.yellow { --text-highlight-rgb: var(--highlighter-yellow-rgb) !important; }
 	}
-/* #endregion {highlighter} */
+/* #endregion {Highlighter} */
