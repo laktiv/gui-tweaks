@@ -1,7 +1,9 @@
 @forward '../variables';
 
-/* #region PLUGINS */
+@use '../editor';
 
-@use './community/_index.scss';
+/* #region [[PLUGINS]] */
 
-/* #endregion PLUGINS */
+@use './community';
+
+/* #endregion [[PLUGINS]] */

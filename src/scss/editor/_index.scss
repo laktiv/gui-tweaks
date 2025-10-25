@@ -1,9 +1,12 @@
 @forward '../variables';
 
 
-/* #region EDITOR */
+/* #region [[EDITOR]] */
 
+@use './comments.css';
+@use './highlighter.css';
 @use './keyboard.scss';
 @use './property.scss';
+@use './footnote.css';
 
-/* #endregion EDITOR */
+/* #endregion [[EDITOR]] */

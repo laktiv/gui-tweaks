@@ -1,0 +1,69 @@
+/* #region {Comment} */
+ /* ~ Hide `%%` */
+  .is-live-preview .cm-line:not(.cm-active) {
+    .cm-comment-start,
+    .cm-comment-end { display: none; }
+  }
+  .cm-active.cm-line {
+    .cm-comment-start { padding-right: 2px;  }
+    .cm-comment-end { padding-left: 2px; }
+  }
+
+ /* ~ Style comments text */
+  .cm-comment:not(:is(.cm-formatting, .cm-hmd-codeblock)) {
+    --link-decoration-hover: none;
+    --link-external-decoration: none;
+    --link-external-decoration-hover: none;
+
+    border-top: 1px solid var(--divider-color);
+    border-bottom: 1px solid var(--divider-color);
+    font-style: italic;
+    display: inline-block;
+    color: var(--color-base-70);
+  }
+
+ /* ~ Round and draw first and last side vorders */
+  .cm-line:has(.cm-comment-start) + .cm-line .cm-comment,
+  .cm-comment-start + .cm-comment {
+    border-left: 1px solid var(--divider-color);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-left: 2px;
+  }
+  .cm-line:has(+.cm-line .cm-comment-end) .cm-comment,
+  .cm-comment:has(+.cm-comment-end) {
+    border-right: 1px solid var(--divider-color);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-right: 2px;
+  }
+
+ /* ~ Comment text becomes smaller */
+  .cm-comment {
+    font-size: 0.8em;
+    opacity: 0.8;
+  }
+
+ /* ~ Real-time editing mode */
+  .hr+.cm-line:has(.cm-comment) {
+    text-align: center !important;
+    padding-top: 0px !important;
+    .cm-formatting {
+      opacity: 0.0;
+    }
+    padding-bottom: 0.6em;
+    border-bottom: 2px solid var(--hr-color);
+    opacity: 1.0;
+  }
+  .hr+.cm-line.cm-active:has(.cm-comment) {
+    .cm-formatting {
+      opacity: 0.8;
+    }
+  }
+
+ /* ~ Source code mode, only center text and add underline */
+  .HyperMD-hr+.cm-comment {
+    text-align: center !important;
+    border-bottom: 2px solid var(--hr-color);
+  }
+/* #endregion {Comment} */

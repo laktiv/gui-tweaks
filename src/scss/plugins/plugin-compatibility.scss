@@ -1,0 +1,81 @@
+@use 'sass:string';
+
+@function generateList($variable) {
+  $string: '';
+  @each $next in $variable {
+    $string: string.insert($string, '- #{$next}\d', -1);
+  }
+  @return $string;
+}
+
+$core: [
+  canvas,
+  file-explorer,
+  file-navigator
+  outline
+  //command-palette,
+  //global-search,
+  //graph,
+  //outgoing-link,
+  //page-preview,
+  //starred,
+  //switcher,
+  //tag-pane,
+  //webviewer 
+];
+$community: [
+  advanced-canvas,
+  api-request,
+  obsidian-apply-patterns,
+  // buttons,
+  cmdr,
+  obsidian-custom-frames,
+  datacore,
+  dataview,
+  // editing-toolbar,
+  folder-note,
+  // gemini-scribe,
+  // obsidian-git,
+  inlineai,
+  obsidian-kanban,
+  obsidian-list-callouts,
+  // mermaid,
+  obsidian-meta-bind-plugin,
+  modalforms,
+  mysnippets-plugin,
+  note-toolbar,
+  paste-reformatter,
+  recent-files-obsidian,
+  regex-mark,
+  smart-connections,
+  obsidian-style-settings,
+  // tab-panels,
+  obsidian-task-progress-bar,
+  obsidian-tasks-plugin,
+  // todoist-sync-plugin,
+  // obsidian-shellcommands,
+  // obsidian-text-format,
+  // settings-search,
+  ai-editor,
+  callout-manager,
+  css-editor,
+  js-engine,
+  obsidian-icon-folder,
+  obsidian-linter,
+  obsidian-plugin-update-tracker,
+  obsidian-snippet-downloader,
+  tasks-modal,
+  // code-files,
+  // data-fetcher,
+  // obsidian-imgur-plugin,
+  obsidian42-brat,
+  prettier,
+  templater-obsidian
+];
+
+/* @plugins
+core:
+#{generateList($core)}
+community:
+#{generateList($community)}
+*/

@@ -32,7 +32,8 @@
   .prettier-settings__mapping:not(:nth-child(1)) button {
     background-color: var(--button-gray-background-color) !important;
   }
-  .prettier-settings__mapping:not(:nth-child(1)) button, .prettier-settings__mapping:not(:nth-child(1)) button svg.svg-icon {
+  .prettier-settings__mapping:not(:nth-child(1)) button, 
+  .prettier-settings__mapping:not(:nth-child(1)) button svg.svg-icon {
     color: var(--text-on-accent) !important;
   }
   .setting-item-extra + .setting-item button {
