@@ -1,0 +1,45 @@
+/*
+Error: Invalid CSS after "...order-width: 0 ": expected "}", was "!important;"
+        on line 42 of D:\Dev\gui-tweaks\src\scss\plugins\community\regexMark.scss
+
+37:       &:nth-last-child(2) { padding: var(--size-4-1) 0; }
+38:     }
+39:   }
+40: 
+41:   .callout {
+42:     --callout-border-width: 0 !important;
+43: 
+44:     .callout-title { padding: var(--size-4-1) auto var(--size-4-1) auto; }
+45:     .callout-content * { margin: var(--size-2-1) auto 0 auto; }
+46:   }
+47: 
+
+Backtrace:
+D:\Dev\gui-tweaks\src\scss\plugins\community\regexMark.scss:42
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1278:in `expected'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1208:in `expected'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1203:in `tok!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:679:in `block'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:747:in `declaration_or_ruleset'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:697:in `block_child'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:689:in `block_contents'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:678:in `block'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:670:in `ruleset'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:696:in `block_child'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:689:in `block_contents'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:137:in `stylesheet'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:41:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:414:in `_to_tree'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:290:in `render'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:400:in `run'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
+C:/Program Files (x86)/Koala/bin/sass:22:in `load'
+C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...order-width: 0 \": expected \"}\", was \"!important;\"\A         on line 42 of D:\Dev\gui-tweaks\src\scss\plugins\community\regexMark.scss\A \A 37:       &:nth-last-child(2) { padding: var(--size-4-1) 0; }\A 38:     }\A 39:   }\A 40: \A 41:   .callout {\A 42:     --callout-border-width: 0 !important;\A 43: \A 44:     .callout-title { padding: var(--size-4-1) auto var(--size-4-1) auto; }\A 45:     .callout-content * { margin: var(--size-2-1) auto 0 auto; }\A 46:   }\A 47: "; }

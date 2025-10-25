@@ -1,0 +1,45 @@
+/*
+Error: Invalid CSS after "...ext-on-accent) ": expected "}", was "!important;"
+        on line 28 of D:\Dev\gui-tweaks\src\scss\plugins\community\otherPlugins.scss
+
+23: /* #endregion {Apply Patterns} *\/
+24: 
+25: /* #region {Priettier} *\/
+26: @scope (.mod-settings, .modal) to (:scope .modal-content > .vertical-tab-content) {
+27:   .prettier-settings__mapping-header button {
+28:     --text-color: var(--text-on-accent) !important;
+29:     color: var(--text-on-accent) !important;
+30:     background-color: var(--interactive-accent) !important;
+31:   }
+32:   .prettier-settings__mapping:not(:nth-child(1)) button {
+33:     background-color: var(--button-gray-background-color) !important;
+
+Backtrace:
+D:\Dev\gui-tweaks\src\scss\plugins\community\otherPlugins.scss:28
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1278:in `expected'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1208:in `expected'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1203:in `tok!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:679:in `block'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:747:in `declaration_or_ruleset'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:697:in `block_child'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:686:in `block_contents'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:225:in `directive_body'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:217:in `directive'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:696:in `block_child'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:689:in `block_contents'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:137:in `stylesheet'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:41:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:414:in `_to_tree'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:290:in `render'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:400:in `run'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
+C:/Program Files (x86)/Koala/bin/sass:22:in `load'
+C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...ext-on-accent) \": expected \"}\", was \"!important;\"\A         on line 28 of D:\Dev\gui-tweaks\src\scss\plugins\community\otherPlugins.scss\A \A 23: /* #endregion {Apply Patterns} */\A 24: \A 25: /* #region {Priettier} */\A 26: @scope (.mod-settings, .modal) to (:scope .modal-content > .vertical-tab-content) {\A 27:   .prettier-settings__mapping-header button {\A 28:     --text-color: var(--text-on-accent) !important;\A 29:     color: var(--text-on-accent) !important;\A 30:     background-color: var(--interactive-accent) !important;\A 31:   }\A 32:   .prettier-settings__mapping:not(:nth-child(1)) button {\A 33:     background-color: var(--button-gray-background-color) !important;"; }

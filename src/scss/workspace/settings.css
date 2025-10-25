@@ -1,0 +1,18 @@
+/* #region {Settings} */
+/* line 5, settings.scss */
+.modal:has(.modal-content) input[type=text],
+.modal:has(.modal-content) textarea, .modal:has(.modal-content) textarea[spellcheck=false],
+.mod-settings .vertical-tab-content .setting-item input[type=text],
+.mod-settings .vertical-tab-content .setting-item textarea,
+.mod-settings .vertical-tab-content .setting-item textarea[spellcheck=false] {
+  font-family: var(--font-mono), var(--font-monospace);
+  font-size: var(--font-ui-smaller);
+  padding-inline: var(--size-2-1);
+}
+/* line 12, settings.scss */
+.modal:has(.modal-content) .clickable-icon:has(svg.lucide-trash-2),
+.mod-settings .vertical-tab-content .setting-item .clickable-icon:has(svg.lucide-trash-2) {
+  color: var(--text-error);
+}
+
+/* #endregion {Settings} */

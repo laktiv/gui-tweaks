@@ -1,0 +1,77 @@
+/* #region {Linter} */
+/* line 3, linter.scss */
+.linter-setting-title {
+  align-items: center;
+}
+/* line 5, linter.scss */
+.linter-setting-title h1 {
+  font-weight: 700;
+}
+/* line 6, linter.scss */
+.linter-setting-title .linter-no-border {
+  border: none !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+/* line 12, linter.scss */
+.linter-setting-tab-group {
+  gap: 4px;
+  border: none;
+}
+
+/* line 16, linter.scss */
+.linter-navigation-item {
+  box-sizing: border-box !important;
+  border-radius: var(--radius-l);
+  padding: 8px !important;
+  max-width: unset !important;
+  height: unset;
+  line-height: 100%;
+}
+/* line 23, linter.scss */
+.linter-navigation-item.linter-navigation-item-selected {
+  border: var(--border-width) solid transparent;
+  padding: 8px 12px !important;
+}
+/* line 26, linter.scss */
+.linter-navigation-item:hover {
+  border: var(--border-width) solid var(--interactive-accent);
+}
+
+/* line 30, linter.scss */
+.linter-setting-content .linter-tab-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+/* line 34, linter.scss */
+.linter-setting-content .setting-item-heading:has(.setting-item-control:empty) {
+  display: none;
+}
+/* line 36, linter.scss */
+.linter-setting-content .setting-item:has(+ .linter-visually-hidden) {
+  border-bottom: var(--border-width) solid var(--background-modifier-border);
+  border-bottom-right-radius: var(--radius-s) !important;
+  border-bottom-left-radius: var(--radius-s) !important;
+}
+/* line 40, linter.scss */
+.linter-setting-content div:not(.setting-item) > .setting-item-info {
+  padding: 16px 16px 12px;
+}
+/* line 43, linter.scss */
+.linter-setting-content div:has(.setting-item:not(:only-child)) > .setting-item-name {
+  padding: 16px 16px 0;
+}
+/* line 44, linter.scss */
+.linter-setting-content div:has(.setting-item:not(:only-child)) > .setting-item-description {
+  padding: 0 16px;
+}
+/* line 46, linter.scss */
+.linter-setting-content textarea.full-width {
+  margin: 0;
+  box-shadow: none;
+  border: var(--input-border-width) solid var(--background-modifier-border);
+}
+
+/* #endregion {Linter} */
